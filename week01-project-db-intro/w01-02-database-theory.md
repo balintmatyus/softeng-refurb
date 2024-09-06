@@ -4,11 +4,11 @@ A következőkben egy elméleti összefoglalót olvashatsz az adatbázis tervez�
 
 ## Az adatbázisok szerepe az alkalmazásokban
 
-Az adatbázisok kulcsfontosságú szerepet töltenek be a modern alkalmazásokban, különösen az olyan üzleti szoftverekben, mint amilyen a számlázórendszerünk. De miért is olyan fontosak? Gondolj csak bele, mennyi adatot kell kezelnie egy vállalkozásnak: ügyféladatok, termékek, árak, számlák - és ez csak a jéghegy csúcsa! Az adatbázisok teszik lehetővé, hogy ezeket az információkat hatékonyan tároljuk, kezeljük és visszakeressük.
+Az adatbázisok kulcsfontosságú szerepet töltenek be a modern alkalmazásokban, különösen az olyan üzleti szoftverekben, mint amilyen a rendeléskezelő rendszerünk. De miért is olyan fontosak? Gondolj csak bele, mennyi adatot kell kezelnie egy vállalkozásnak: ügyféladatok, termékek, árak, számlák - és ez csak a jéghegy csúcsa! Az adatbázisok teszik lehetővé, hogy ezeket az információkat hatékonyan tároljuk, kezeljük és visszakeressük.
 
 Íme néhány kulcsfontosságú szerep, amit az adatbázisok betöltenek az alkalmazásokban:
 
-1. **Adattárolás és -szervezés**: Az adatbázisok strukturált módon tárolják az információkat, ami lehetővé teszi, hogy könnyen hozzáférjünk és kezeljük azokat. A számlázórendszerünkben például külön táblákban tárolhatjuk az ügyfeleket, termékeket és számlákat, mindegyiket a saját egyedi mezőivel.
+1. **Adattárolás és -szervezés**: Az adatbázisok strukturált módon tárolják az információkat, ami lehetővé teszi, hogy könnyen hozzáférjünk és kezeljük azokat. A rendeléskezelő rendszerben például külön táblákban tárolhatjuk az ügyfeleket, termékeket és számlákat, mindegyiket a saját egyedi mezőivel.
 
 2. **Adatintegritás biztosítása**: Az adatbázisok segítenek megőrizni az adatok pontosságát és konzisztenciáját. Például megakadályozhatják, hogy ugyanazt a számlaszámot kétszer használjuk, vagy hogy töröljünk egy olyan ügyfelet, akinek még vannak aktív számlái.
 
@@ -20,13 +20,13 @@ Az adatbázisok kulcsfontosságú szerepet töltenek be a modern alkalmazásokba
 
 6. **Skálázhatóság**: A jól tervezett adatbázisok képesek növekedni a vállalkozásoddal együtt. Ahogy nő az ügyfelek és tranzakciók száma, az adatbázis hatékonyan tud alkalmazkodni a megnövekedett terheléshez.
 
-7. **Adatelemzés támogatása**: Az adatbázisokban tárolt strukturált adatok kiválóan alkalmasak elemzésre és riportkészítésre. A számlázórendszerünkben például könnyen készíthetünk kimutatásokat a bevételekről vagy a legnépszerűbb termékekről.
+7. **Adatelemzés támogatása**: Az adatbázisokban tárolt strukturált adatok kiválóan alkalmasak elemzésre és riportkészítésre. A rendeléskezelő rendszerünkben például könnyen készíthetünk kimutatásokat a bevételekről vagy a legnépszerűbb termékekről.
 
-Láthatod, hogy az adatbázisok nem csupán adattárolók, hanem az alkalmazások szerves részei, amelyek biztosítják a megbízható és hatékony működést. A számlázórendszerünk fejlesztése során te is megtapasztalhatod, hogyan válnak az adatbázisok a szoftver "szívévé és agyává", lehetővé téve a komplex üzleti folyamatok kezelését és az értékes üzleti információk kinyerését.
+Láthatod, hogy az adatbázisok nem csupán adattárolók, hanem az alkalmazások szerves részei, amelyek biztosítják a megbízható és hatékony működést. A rendeléskezelő rendszerünk fejlesztése során te is megtapasztalhatod, hogyan válnak az adatbázisok a szoftver "szívévé és agyává", lehetővé téve a komplex üzleti folyamatok kezelését és az értékes üzleti információk kinyerését.
 
 ## MS-SQL server rövid bemutatása és egyéb potenciális adatbázisszerverek említésszintű felsorolása
 
-A számlázórendszerünk fejlesztése során az MS SQL Servert fogjuk használni adatbázis-kezelő rendszerként. De mielőtt belemerülnénk a részletekbe, érdemes röviden áttekinteni, mi is az MS SQL Server, és milyen alternatívái léteznek a piacon.
+A rendeléskezelő rendszerünk fejlesztése során a Microsoft SQL Servert (MS SQL Server) fogjuk használni az adatbázis szervereként. De mielőtt belemerülnénk a részletekbe, érdemes röviden áttekinteni, mi is az a Microsoft SQL Server, és milyen alternatívái léteznek a piacon.
 
 ### MS SQL Server
 
@@ -64,17 +64,17 @@ Bár mi az MS SQL Servert fogjuk használni, érdemes tudnod, hogy számos más 
 
 7. **IBM Db2**: Nagyvállalati RDBMS, amely különösen jól skálázható és teljesítményorientált.
 
-Mindegyik adatbázis-kezelő rendszernek megvannak a maga erősségei és gyengeségei, és a választás gyakran függ a projekt specifikus követelményeitől, a fejlesztői csapat tapasztalatától és a meglévő infrastruktúrától. A mi esetünkben az MS SQL Server kiváló választás, mivel jól illeszkedik a .NET ökoszisztémához és megfelelő teljesítményt nyújt a számlázórendszerünk igényeihez.
+Mindegyik adatbázis-kezelő rendszernek megvannak a maga erősségei és gyengeségei, és a választás gyakran függ a projekt specifikus követelményeitől, a fejlesztői csapat tapasztalatától és a meglévő infrastruktúrától. A mi esetünkben az MS SQL Server kiváló választás, mivel jól illeszkedik a .NET ökoszisztémához és megfelelő teljesítményt nyújt a rendeléskezelő rendszerünk igényeihez.
 
 ## A relációs adatbázisok alapfogalmai
 
-Most, hogy megismerted az adatbázisok szerepét és a különböző adatbázis-kezelő rendszereket, mélyedjünk el a relációs adatbázisok alapfogalmaiban. Ezek az ismeretek elengedhetetlenek lesznek a számlázórendszerünk adatbázisának tervezéséhez és implementálásához.
+Most, hogy megismerted az adatbázisok szerepét és a különböző adatbázis-kezelő rendszereket, mélyedjünk el a relációs adatbázisok alapfogalmaiban. Ezek az ismeretek elengedhetetlenek lesznek a rendeléskezelő rendszerünk adatbázisának tervezéséhez és implementálásához.
 
 ### Táblák
 
 A táblák a relációs adatbázisok alapvető építőkövei. Egy tábla adatok strukturált gyűjteménye, amely sorokból és oszlopokból áll. Gondolhatsz rá úgy, mint egy Excel táblázatra.
 
-A számlázórendszerünkben például külön táblákban tárolhatjuk az ügyfeleket, termékeket és számlákat. Íme egy egyszerű példa az "Ügyfelek" táblára:
+A rendeléskezelő rendszerünkben például külön táblákban tárolhatjuk az ügyfeleket, termékeket és rendeléseket. Íme egy egyszerű példa az "Ügyfelek" táblára:
 
 ```
 Ügyfelek tábla
@@ -86,7 +86,7 @@ A számlázórendszerünkben például külön táblákban tárolhatjuk az ügyf
 +----+---------------+---------------------+
 ```
 
-Minden tábla egy adott entitástípust reprezentál (pl. ügyfél, termék, számla), és minden sor a tábla egy-egy példányát vagy rekordját jelenti.
+Minden tábla egy adott entitástípust reprezentál (pl. ügyfél, termék, rendelés), és minden sor a tábla egy-egy példányát vagy rekordját jelenti.
 
 ### Oszlopok
 
@@ -145,7 +145,7 @@ Ebben a példában az `ID` oszlop az elsődleges kulcs, amely automatikusan növ
 
 Az elsődleges kulcs koncepciója kulcsfontosságú a relációs adatbázisokban, mivel lehetővé teszi a rekordok egyértelmű azonosítását és a táblák közötti kapcsolatok létrehozását.
 
-Ezek az alapfogalmak - táblák, oszlopok, adattípusok és elsődleges kulcsok - alkotják a relációs adatbázisok alapját. A számlázórendszerünk fejlesztése során ezekre az ismeretekre építve fogjuk megtervezni és implementálni az adatbázisunkat, biztosítva, hogy hatékonyan és megbízhatóan tudja tárolni és kezelni az üzleti adatainkat.
+Ezek az alapfogalmak - táblák, oszlopok, adattípusok és elsődleges kulcsok - alkotják a relációs adatbázisok alapját. A rendeléskezelő rendszerünk fejlesztése során ezekre az ismeretekre építve fogjuk megtervezni és implementálni az adatbázisunkat, biztosítva, hogy hatékonyan és megbízhatóan tudja tárolni és kezelni az üzleti adatainkat.
 
 ## Constraintek alkalmazása, default value
 
@@ -210,7 +210,7 @@ A relációs adatbázisok erejét a táblák közötti kapcsolatok adják. Ezek 
 
 3. **Több-a-többhöz (M:N)**: Amikor mindkét tábla egy rekordja több rekordhoz kapcsolódhat a másik táblában. Ezt általában egy köztes táblával valósítjuk meg.
 
-Nézzünk egy példát a számlázórendszerünkből:
+Nézzünk egy példát a rendeléskezelő rendszerünkből:
 
 ```mermaid
 erDiagram
@@ -266,7 +266,7 @@ Ebben a példában az `UgyfelID` egy idegen kulcs, amely az `Ugyfelek` tábla `I
 
 ## Normalizálás
 
-A normalizálás egy folyamat, amelynek során úgy strukturáljuk az adatbázisunkat, hogy minimalizáljuk a redundanciát és függőségi problémákat. A normalizálás során különböző normálformákat (NF) alkalmazunk. Nézzük meg, hogyan alkalmazhatjuk ezeket a normálformákat a számlázórendszerünk adatbázisára.
+A normalizálás egy folyamat, amelynek során úgy strukturáljuk az adatbázisunkat, hogy minimalizáljuk a redundanciát és függőségi problémákat. A normalizálás során különböző normálformákat (NF) alkalmazunk. Nézzük meg, hogyan alkalmazhatjuk ezeket a normálformákat a rendeléskezelő rendszerünk adatbázisára.
 
 Kezdjük egy nem normalizált táblával:
 
@@ -292,8 +292,8 @@ Az 1NF megköveteli, hogy:
 2. Ne legyenek ismétlődő oszlopcsoportok
 
 Problémák a jelenlegi táblával:
-- Az ügyfél adatai ismétlődhetnek különböző számláknál
-- Egy számlán több termék is szerepelhet, amit jelenleg nem tudunk kezelni
+- Az ügyfél adatai ismétlődhetnek különböző rendeléseknél
+- Egy rendeléshez több termék is tartozhat, amit jelenleg nem tudunk kezelni
 
 1NF-re hozva:
 
@@ -330,7 +330,7 @@ A 2NF megköveteli, hogy:
 1. A tábla 1NF-ben legyen
 2. Minden nem kulcs attribútum teljes funkcionális függőségben legyen a teljes elsődleges kulcstól
 
-Probléma: A `Termek_Nev` és `Termek_Ar` a termékhez tartozik, nem a számla tételéhez. Emellett fontos, hogy a termék ára a számla kiállításakor érvényes árat tükrözze, ne a jelenlegi árat.
+Probléma: A `Termek_Nev` és `Termek_Ar` a termékhez tartozik, nem a rendelés tételéhez. Emellett fontos, hogy a termék ára a rendelés létrehozásakor érvényes árat tükrözze, ne a jelenlegi árat.
 
 2NF-re hozva:
 
@@ -417,16 +417,16 @@ erDiagram
 
 Ebben a példában láthatod, hogyan fejlődött az adatbázis struktúrája a normalizálás során:
 
-1. Az 1NF során szétválasztottuk az ismétlődő adatokat külön táblákba, lehetővé téve több tétel kezelését egy számlán.
-2. A 2NF során kiküszöböltük a részleges függőségeket a `TERMEKEK` tábla bevezetésével, és biztosítottuk, hogy a számla tételeinél a kiállításkori árat tároljuk.
+1. Az 1NF során szétválasztottuk az ismétlődő adatokat külön táblákba, lehetővé téve több tétel kezelését egy rendelésre vonatkozóan.
+2. A 2NF során kiküszöböltük a részleges függőségeket a `TERMEKEK` tábla bevezetésével, és biztosítottuk, hogy a rendelés tételeinél a kiállításkori árat tároljuk.
 3. A 3NF során a tranzitív függőségeket szüntettük meg a `CIMEK` tábla létrehozásával, amely lehetővé teszi a címadatok strukturált és konzisztens tárolását.
 
-Ez a normalizált struktúra számos előnnyel jár a számlázórendszered számára:
+Ez a normalizált struktúra számos előnnyel jár a rendeléskezelő rendszered számára:
 
 - Elkerüli az adatredundanciát, így csökkenti a tárhelyigényt és az inkonzisztencia kockázatát.
-- Lehetővé teszi a termékárak változását anélkül, hogy ez befolyásolná a már kiállított számlák összegeit.
+- Lehetővé teszi a termékárak változását anélkül, hogy ez befolyásolná a már lezárt rendelések összegeit.
 - Könnyebbé teszi a rendszer bővítését, például új mezők vagy funkciók hozzáadását.
 
-Fontos megjegyezni, hogy bár a normalizálás segít elkerülni számos adatkezelési problémát, a gyakorlatban néha kompromisszumokat kell kötnünk a teljesítmény érdekében. Például, ha nagyon gyakran kell lekérdezned egy számla összes adatát (beleértve az ügyfél és termék részleteket), akkor a sok JOIN művelet lassíthatja a lekérdezéseket. Ilyen esetekben megfontolhatod denormalizált nézetek vagy indexelt nézetek használatát a gyakori lekérdezések optimalizálására.
+Fontos megjegyezni, hogy bár a normalizálás segít elkerülni számos adatkezelési problémát, a gyakorlatban néha kompromisszumokat kell kötnünk a teljesítmény érdekében. Például, ha nagyon gyakran kell lekérdezned egy rendelés összes adatát (beleértve az ügyfél és termék részleteket), akkor a sok JOIN művelet lassíthatja a lekérdezéseket. Ilyen esetekben megfontolhatod denormalizált nézetek vagy indexelt nézetek használatát a gyakori lekérdezések optimalizálására.
 
-A számlázórendszered tervezése során a normalizálás elveit követve olyan adatbázis-struktúrát hozhatsz létre, amely rugalmas, könnyen karbantartható, és jól skálázható a jövőbeli igényekhez.
+A rendeléskezelő rendszered tervezése során a normalizálás elveit követve olyan adatbázis-struktúrát hozhatsz létre, amely rugalmas, könnyen karbantartható, és jól skálázható a jövőbeli igényekhez.
