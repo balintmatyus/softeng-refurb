@@ -1,23 +1,34 @@
 # Projekt: Rendeléskezelő rendszer fejlesztése
 
-Kedves Hallgató!
+**Kedves Hallgató!**
 
-Üdvözöllek a Software Engineering kurzus keretében megvalósuló rendeléskezelő rendszer fejlesztési projektben. Ez a gyakorlatorientált tanulási folyamat kiváló lehetőséget nyújt számodra, hogy elméleti tudásodat gyakorlati készségekké alakítsd át.
+Üdvözlünk a Software Engineering kurzus keretében. A következő oldalakon egy rendeléskezelő rendszer fejlesztési folyamatát fogjuk bemutatni, amely értékes gyakorlati tapasztalatot nyújt számodra a szoftverfejlesztés területén.
 
-A projekt során egy olyan rendeléskezelő rendszert fogsz kifejleszteni, amely modellezi egy valós üzleti alkalmazás alapvető funkcióit. Bár ez egy oktatási célú projekt, a megszerzett ismeretek és tapasztalatok közvetlenül alkalmazhatóak lesznek a szoftverfejlesztői pályafutásod során.
+Ez a projekt lehetőséget biztosít, hogy elméleti tudásodat valós környezetben alkalmazd. A rendeléskezelő rendszer, amit létrehozol, bár elsősorban oktatási célokat szolgál, jó alapot nyújthat egy későbbi, üzleti környezetben használható alkalmazás fejlesztéséhez.
 
-A kurzus keretében megismerkedsz a modern szoftverfejlesztés eszköztárával, beleértve a .NET 8 keretrendszert, a C# programozási nyelvet, az MS SQL adatbázis-kezelőt és a Windows Forms technológiát. Ezek a technológiák széles körben elterjedtek az iparágban, így elsajátításuk értékes tudást jelent a munkaerőpiacon.
+A kurzus során olyan technológiákkal fogsz dolgozni, amelyek széles körben elterjedtek az iparágban. A .NET 8 keretrendszer, a C# programozási nyelv, az MS SQL adatbázis és a Windows Forms technológia mind olyan eszközök, amelyek ismerete előnyt jelenthet a munkaerőpiacon.
 
-A rendeléskezelő rendszer fejlesztése során komplex feladatokkal fogsz szembesülni. Az adatbázis tervezésétől kezdve, az üzleti logika implementálásán át, egészen a felhasználói felület kialakításáig, a szoftverfejlesztés számos aspektusával foglalkozol majd. Ez a projekt lehetőséget ad arra, hogy átfogó képet kapj egy üzleti alkalmazás működéséről és fejlesztési folyamatáról.
+A projekt komplexitása lehetővé teszi, hogy ne csak programozási készségeidet fejleszd, hanem betekintést nyerj az adatbázis-tervezés, az üzleti folyamatok modellezése és a felhasználói felületek kialakításának világába is. Ez a széles körű tapasztalat értékes lesz szakmai fejlődésed szempontjából.
 
-A gyakorlati munka során nem csak programozási készségeidet fejleszted, hanem olyan kompetenciákat is elsajátítasz, mint az adatbázis-kezelés, a felhasználói felület tervezés és az üzleti folyamatok modellezése. Ezek a készségek elengedhetetlenek egy sikeres szoftverfejlesztői karrier építéséhez.
+Fontos megjegyezni, hogy ez a projekt a portfóliód részévé válhat. Egy olyan komplex alkalmazás fejlesztése, amely valós üzleti problémára reflektál, jó referencia lehet jövőbeli álláskeresésed során.
 
-Fontos megjegyezni, hogy bár ez egy oktatási projekt, a megszerzett tudás és tapasztalat alapot nyújthat komplexebb, valós üzleti környezetben használt rendszerek fejlesztéséhez is. A projekt során létrehozott alkalmazás szolgálhat referenciaként jövőbeli munkakeresésed során, demonstrálva gyakorlati készségeidet és problémamegoldó képességedet.
+A kurzus során lépésről lépésre haladunk majd, így fokozatosan sajátíthatod el az szükséges ismereteket. Bár lesznek kihívást jelentő szakaszok, ezek leküzdése mind hozzájárul a szakmai fejlődésedhez.
 
-A kurzus során lépésről lépésre haladunk majd, biztosítva, hogy minden fontos koncepciót és technikát megfelelően elsajátíts. A "learning-by-doing" megközelítés lehetővé teszi, hogy aktívan részt vegyél a tanulási folyamatban, és közvetlenül tapasztald meg a fejlesztés kihívásait és sikereit.
+Bízunk benne, hogy ez a projekt nemcsak a kurzus követelményeinek teljesítését segíti, hanem valódi szakmai tapasztalattal is gazdagít.
 
-Bízom benne, hogy ez a projekt értékes tapasztalatokkal gazdagít, és hozzájárul szakmai fejlődésedhez. Kívánom, hogy találd meg az örömöt a tanulás és alkotás folyamatában, és sikeresen navigálj át a szoftverfejlesztés izgalmas világán.
+Eredményes munkát és sikeres tanulást kívánunk!
 
-Eredményes munkát és tartalmas tanulást kívánok!
+A szerzők
 
-Szerzők
+## 1. fejezet
+1. [A rendeléskezelő rendszer funkcióinak áttekintése](./ch01-project-db/ch01-01-project-intro.md)
+2. [Adatbázis-tervezés elméleti alapjai](./ch01-project-db/ch01-02-database-theory.md)
+3. [A rendeléskezelő rendszer adatbázisának tervezése](./ch01-project-db/ch01-03-database-design.md)
+4. [Adatbázis feltöltése szintetikus adatokkal](./ch01-project-db/ch01-04-synthetic-data.md)
+
+## 2. fejezet
+1. Windows Forms projekt létrehozása és Scaffold-Db használata
+2. CRUD műveletek TreeView és DataGridView segítségével (Termékek és Termékkategóriák adatainak kezelése)
+3. Adatok validálása (Ügyfelek adatainak kezelése)
+4. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
+5. Adatok exportálása Excelbe
