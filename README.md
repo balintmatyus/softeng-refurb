@@ -27,7 +27,7 @@ A szerzők
 4. [Adatbázis feltöltése szintetikus adatokkal](./ch01-project-db/ch01-04-synthetic-data.md)
 
 ## 2. fejezet
-1. Windows Forms projekt létrehozása és Scaffold-Db használata
+1. [Windows Forms projekt létrehozása és Scaffold-Db használata](./ch02-winforms/ch02-01-scaffolding.md)
 2. CRUD műveletek TreeView és DataGridView segítségével (Termékek és Termékkategóriák adatainak kezelése)
 3. Adatok validálása (Ügyfelek adatainak kezelése)
 4. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
