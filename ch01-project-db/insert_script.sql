@@ -166,106 +166,149 @@ INSERT INTO TERMEK_KATEGORIA (Nev, Leiras, SzuloKategoriaID)
 VALUES ('Hobbi és Játékok', 'Szórakoztató játékok és hobbi eszközök.', 5);
 
 
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Arcápolás', 'A Arcápolás modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Arcápolás kiváló minõségû és megbízható.', 14249.96, 420, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Mobiltelefon', 'A Mobiltelefon kiváló minõségû és megbízható. A Mobiltelefon tökéletes választás mindennapi használatra.', 453541.33, 890, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok kiváló minõségû és megbízható. A Hobbi és Játékok tökéletes választás mindennapi használatra.', 40386.89, 726, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Konyhai Eszköz', 'A Konyhai Eszköz kiváló minõségû és megbízható. A Konyhai Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 310742.55, 275, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hajápolás', 'A Hajápolás modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Hajápolás kiváló minõségû és megbízható.', 287210.34, 538, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Arcápolás', 'A Arcápolás kiváló minõségû és megbízható. A Arcápolás modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 259733.04, 127, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kültéri Sportok', 'A Kültéri Sportok kiváló minõségû és megbízható. A Kültéri Sportok modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 197408.62, 850, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok kiváló minõségû és megbízható. A Hobbi és Játékok tökéletes választás mindennapi használatra.', 337308.88, 158, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Konyhai Eszköz', 'A Konyhai Eszköz kiváló minõségû és megbízható. A Konyhai Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 120463.4, 135, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kerti Eszköz', 'A Kerti Eszköz tökéletes választás mindennapi használatra. A Kerti Eszköz kiváló minõségû és megbízható.', 357139.72, 221, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Gyerek Ruha', 'A Gyerek Ruha kiváló minõségû és megbízható. A Gyerek Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 159914.18, 677, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Mobiltelefon', 'A Mobiltelefon modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Mobiltelefon kiváló minõségû és megbízható.', 13813.14, 954, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Okosóra', 'A Okosóra kiváló minõségû és megbízható. A Okosóra tökéletes választás mindennapi használatra.', 209037.03, 309, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék tökéletes választás mindennapi használatra. A Smink Termék modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 408503.47, 913, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Smink Termék kiváló minõségû és megbízható.', 65592.32, 186, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Nõi Ruha', 'A Nõi Ruha tökéletes választás mindennapi használatra. A Nõi Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 244407.95, 811, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok kiváló minõségû és megbízható. A Hobbi és Játékok modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 267296.63, 294, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kerti Eszköz', 'A Kerti Eszköz tökéletes választás mindennapi használatra. A Kerti Eszköz kiváló minõségû és megbízható.', 446423.27, 684, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor tökéletes választás mindennapi használatra. A Bútor modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 270160.88, 536, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék tökéletes választás mindennapi használatra. A Smink Termék modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 71800.79, 376, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hajápolás', 'A Hajápolás tökéletes választás mindennapi használatra. A Hajápolás kiváló minõségû és megbízható.', 68822.39, 344, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor kiváló minõségû és megbízható. A Bútor modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 346514.37, 754, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('TV', 'A TV kiváló minõségû és megbízható. A TV modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 233276.14, 124, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Arcápolás', 'A Arcápolás modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Arcápolás tökéletes választás mindennapi használatra.', 198122.05, 908, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Okosóra', 'A Okosóra kiváló minõségû és megbízható. A Okosóra modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 489147.7, 408, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Férfi Ruha', 'A Férfi Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Férfi Ruha tökéletes választás mindennapi használatra.', 449784.28, 573, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok kiváló minõségû és megbízható. A Hobbi és Játékok modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 382748.58, 659, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Konyhai Eszköz', 'A Konyhai Eszköz kiváló minõségû és megbízható. A Konyhai Eszköz tökéletes választás mindennapi használatra.', 72400.44, 163, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Arcápolás', 'A Arcápolás kiváló minõségû és megbízható. A Arcápolás tökéletes választás mindennapi használatra.', 247681.38, 472, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kerti Eszköz', 'A Kerti Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Kerti Eszköz kiváló minõségû és megbízható.', 45329.5, 322, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék kiváló minõségû és megbízható. A Smink Termék tökéletes választás mindennapi használatra.', 11525.91, 191, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('TV', 'A TV kiváló minõségû és megbízható. A TV modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 115032.0, 634, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék kiváló minõségû és megbízható. A Smink Termék tökéletes választás mindennapi használatra.', 91131.79, 245, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Smink Termék tökéletes választás mindennapi használatra.', 237544.93, 315, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék kiváló minõségû és megbízható. A Smink Termék tökéletes választás mindennapi használatra.', 476498.13, 520, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Fitnesz Eszköz', 'A Fitnesz Eszköz kiváló minõségû és megbízható. A Fitnesz Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 82995.94, 532, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Hobbi és Játékok tökéletes választás mindennapi használatra.', 40006.98, 103, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Mobiltelefon', 'A Mobiltelefon kiváló minõségû és megbízható. A Mobiltelefon tökéletes választás mindennapi használatra.', 9788.8, 7, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Laptop', 'A Laptop modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Laptop tökéletes választás mindennapi használatra.', 160071.28, 776, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Laptop', 'A Laptop modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Laptop kiváló minõségû és megbízható.', 390973.61, 697, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Okosóra', 'A Okosóra modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Okosóra tökéletes választás mindennapi használatra.', 363607.89, 528, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Gyerek Ruha', 'A Gyerek Ruha kiváló minõségû és megbízható. A Gyerek Ruha tökéletes választás mindennapi használatra.', 331001.22, 946, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Okosóra', 'A Okosóra kiváló minõségû és megbízható. A Okosóra tökéletes választás mindennapi használatra.', 310185.57, 231, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Hobbi és Játékok tökéletes választás mindennapi használatra.', 243650.83, 835, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok kiváló minõségû és megbízható. A Hobbi és Játékok tökéletes választás mindennapi használatra.', 306565.34, 552, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Hobbi és Játékok tökéletes választás mindennapi használatra.', 87808.74, 231, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Bútor kiváló minõségû és megbízható.', 330216.86, 542, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kültéri Sportok', 'A Kültéri Sportok modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Kültéri Sportok tökéletes választás mindennapi használatra.', 388623.5, 843, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Arcápolás', 'A Arcápolás kiváló minõségû és megbízható. A Arcápolás modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 216184.52, 68, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Smink Termék', 'A Smink Termék kiváló minõségû és megbízható. A Smink Termék tökéletes választás mindennapi használatra.', 84815.62, 812, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor tökéletes választás mindennapi használatra. A Bútor modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 397815.09, 176, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Nõi Ruha', 'A Nõi Ruha kiváló minõségû és megbízható. A Nõi Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 225813.28, 239, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Arcápolás', 'A Arcápolás tökéletes választás mindennapi használatra. A Arcápolás kiváló minõségû és megbízható.', 356973.0, 9, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Laptop', 'A Laptop modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Laptop tökéletes választás mindennapi használatra.', 165585.99, 285, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kerti Eszköz', 'A Kerti Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Kerti Eszköz kiváló minõségû és megbízható.', 235360.71, 383, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kültéri Sportok', 'A Kültéri Sportok tökéletes választás mindennapi használatra. A Kültéri Sportok kiváló minõségû és megbízható.', 462276.91, 73, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Nõi Ruha', 'A Nõi Ruha kiváló minõségû és megbízható. A Nõi Ruha tökéletes választás mindennapi használatra.', 273421.28, 172, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Férfi Ruha', 'A Férfi Ruha kiváló minõségû és megbízható. A Férfi Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 303448.59, 289, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor tökéletes választás mindennapi használatra. A Bútor kiváló minõségû és megbízható.', 217035.4, 821, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kültéri Sportok', 'A Kültéri Sportok tökéletes választás mindennapi használatra. A Kültéri Sportok modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 90942.25, 195, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Hobbi és Játékok kiváló minõségû és megbízható.', 366469.94, 655, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Okosóra', 'A Okosóra tökéletes választás mindennapi használatra. A Okosóra kiváló minõségû és megbízható.', 400795.81, 532, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('TV', 'A TV tökéletes választás mindennapi használatra. A TV modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 24324.4, 520, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Laptop', 'A Laptop modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Laptop kiváló minõségû és megbízható.', 407838.35, 824, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Konyhai Eszköz', 'A Konyhai Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Konyhai Eszköz kiváló minõségû és megbízható.', 295157.6, 483, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor tökéletes választás mindennapi használatra. A Bútor modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 349392.56, 203, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hajápolás', 'A Hajápolás kiváló minõségû és megbízható. A Hajápolás modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 145980.84, 401, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Férfi Ruha', 'A Férfi Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Férfi Ruha kiváló minõségû és megbízható.', 444547.3, 343, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kerti Eszköz', 'A Kerti Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Kerti Eszköz kiváló minõségû és megbízható.', 342438.0, 355, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Bútor kiváló minõségû és megbízható.', 401116.51, 721, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Konyhai Eszköz', 'A Konyhai Eszköz kiváló minõségû és megbízható. A Konyhai Eszköz tökéletes választás mindennapi használatra.', 494743.69, 503, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor tökéletes választás mindennapi használatra. A Bútor kiváló minõségû és megbízható.', 28970.66, 850, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Gyerek Ruha', 'A Gyerek Ruha kiváló minõségû és megbízható. A Gyerek Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 32055.26, 353, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Konyhai Eszköz', 'A Konyhai Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Konyhai Eszköz tökéletes választás mindennapi használatra.', 148220.87, 705, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Fitnesz Eszköz', 'A Fitnesz Eszköz tökéletes választás mindennapi használatra. A Fitnesz Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 200800.58, 787, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Gyerek Ruha', 'A Gyerek Ruha tökéletes választás mindennapi használatra. A Gyerek Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 457607.69, 507, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kültéri Sportok', 'A Kültéri Sportok modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Kültéri Sportok tökéletes választás mindennapi használatra.', 372119.04, 134, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Fitnesz Eszköz', 'A Fitnesz Eszköz kiváló minõségû és megbízható. A Fitnesz Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 363282.02, 784, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kerti Eszköz', 'A Kerti Eszköz tökéletes választás mindennapi használatra. A Kerti Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 181774.8, 839, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Nõi Ruha', 'A Nõi Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Nõi Ruha kiváló minõségû és megbízható.', 200740.83, 958, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hobbi és Játékok', 'A Hobbi és Játékok modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Hobbi és Játékok kiváló minõségû és megbízható.', 412124.42, 110, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Mobiltelefon', 'A Mobiltelefon tökéletes választás mindennapi használatra. A Mobiltelefon kiváló minõségû és megbízható.', 208511.41, 322, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Gyerek Ruha', 'A Gyerek Ruha kiváló minõségû és megbízható. A Gyerek Ruha tökéletes választás mindennapi használatra.', 455610.12, 922, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kerti Eszköz', 'A Kerti Eszköz tökéletes választás mindennapi használatra. A Kerti Eszköz kiváló minõségû és megbízható.', 445589.52, 799, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('TV', 'A TV kiváló minõségû és megbízható. A TV tökéletes választás mindennapi használatra.', 76238.09, 722, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('TV', 'A TV modern dizájnnal és kiváló teljesítménnyel rendelkezik. A TV kiváló minõségû és megbízható.', 391965.02, 340, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('TV', 'A TV tökéletes választás mindennapi használatra. A TV modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 444536.54, 574, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Laptop', 'A Laptop tökéletes választás mindennapi használatra. A Laptop kiváló minõségû és megbízható.', 399338.67, 296, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Laptop', 'A Laptop modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Laptop kiváló minõségû és megbízható.', 373534.04, 106, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Okosóra', 'A Okosóra tökéletes választás mindennapi használatra. A Okosóra kiváló minõségû és megbízható.', 169107.16, 750, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('TV', 'A TV kiváló minõségû és megbízható. A TV tökéletes választás mindennapi használatra.', 49037.23, 693, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Arcápolás', 'A Arcápolás kiváló minõségû és megbízható. A Arcápolás tökéletes választás mindennapi használatra.', 125123.95, 278, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Fitnesz Eszköz', 'A Fitnesz Eszköz tökéletes választás mindennapi használatra. A Fitnesz Eszköz kiváló minõségû és megbízható.', 229407.4, 358, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Gyerek Ruha', 'A Gyerek Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Gyerek Ruha kiváló minõségû és megbízható.', 252877.08, 618, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Bútor', 'A Bútor modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Bútor tökéletes választás mindennapi használatra.', 316580.29, 610, 3);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Hajápolás', 'A Hajápolás kiváló minõségû és megbízható. A Hajápolás tökéletes választás mindennapi használatra.', 484688.23, 699, 4);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Laptop', 'A Laptop modern dizájnnal és kiváló teljesítménnyel rendelkezik. A Laptop tökéletes választás mindennapi használatra.', 448206.1, 499, 1);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Fitnesz Eszköz', 'A Fitnesz Eszköz tökéletes választás mindennapi használatra. A Fitnesz Eszköz modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 344768.4, 759, 5);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Nõi Ruha', 'A Nõi Ruha tökéletes választás mindennapi használatra. A Nõi Ruha modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 412571.72, 241, 2);
-INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID) VALUES ('Kültéri Sportok', 'A Kültéri Sportok kiváló minõségû és megbízható. A Kültéri Sportok modern dizájnnal és kiváló teljesítménnyel rendelkezik.', 172544.89, 412, 5);
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Samsung Galaxy S21', 'Csúcskategóriás okostelefon kiváló kamerával és teljesítménnyel.', 289999.99, 50, 6);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('HP Pavilion 15', 'Megbízható laptop mindennapi használatra és munkavégzésre.', 199999.99, 30, 7);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('LG OLED 55" TV', 'Lenyûgözõ képminõségû OLED televízió filmrajongóknak.', 399999.99, 15, 8);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Nike Air Max', 'Kényelmes és stílusos futócipõ minden korosztálynak.', 34999.99, 100, 9);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Zara Nyári Ruha', 'Könnyû, divatos nyári ruha nõknek.', 12999.99, 75, 10);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Bosch Fûnyíró', 'Hatékony elektromos fûnyíró kis és közepes méretû kertekhez.', 69999.99, 25, 11);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('IKEA Billy Könyvespolc', 'Klasszikus, sokoldalú könyvespolc többféle színben.', 24999.99, 60, 12);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('L''Oréal Paris Revitalift Krém', 'Ránctalanító és feszesítõ arckrém érett bõrre.', 5999.99, 200, 13);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Dyson Hajszárító', 'Innovatív technológiájú hajszárító a gyors és kíméletes szárításért.', 129999.99, 40, 14);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Xiaomi Mi Band 6', 'Megfizethetõ és sokoldalú fitness karkötõ.', 14999.99, 150, 17);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Apple MacBook Air', 'Vékony és könnyû laptop Apple rajongóknak.', 399999.99, 35, 7);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Sony PlayStation 5', 'Next-gen játékkonzol lenyûgözõ grafikával és teljesítménnyel.', 189999.99, 10, 1);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Adidas Originals Póló', 'Klasszikus stílusú póló hétköznapi viseletre.', 9999.99, 120, 9);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Philips Kávéfõzõ', 'Automata kávéfõzõ frissen õrölt kávéból készült italokhoz.', 54999.99, 45, 19);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Canon EOS 250D', 'Belépõ szintû DSLR fényképezõgép hobbi fotósoknak.', 179999.99, 25, 1);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('H&M Gyerek Overál', 'Aranyos és kényelmes overál kisgyermekeknek.', 4999.99, 80, 18);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Gardena Locsolótömlõ', 'Tartós és rugalmas locsolótömlõ kertápoláshoz.', 7999.99, 70, 11);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('IKEA Malm Ágy', 'Egyszerû és modern ágy többféle méretben.', 59999.99, 40, 12);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('MAC Rúzs', 'Hosszan tartó, intenzív színû rúzs.', 8999.99, 100, 20);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Technogym Futópad', 'Professzionális futópad otthoni edzésekhez.', 499999.99, 5, 15);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('OnePlus 9 Pro', 'Csúcskategóriás Android okostelefon kiváló ár-érték aránnyal.', 259999.99, 40, 6);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Dell XPS 13', 'Prémium ultrabook vékony dizájnnal és erõs teljesítménnyel.', 449999.99, 20, 7);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Samsung QLED 65" TV', 'Nagy méretû QLED TV lenyûgözõ színekkel és kontraszttal.', 549999.99, 10, 8);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Levi''s 501 Farmer', 'Klasszikus szabású farmer férfiaknak.', 24999.99, 90, 9);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('COS Selyemblúz', 'Elegáns selyemblúz irodai és alkalmi viselethez.', 29999.99, 60, 10);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Husqvarna Láncfûrész', 'Erõteljes benzines láncfûrész profi felhasználóknak.', 89999.99, 15, 11);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Natuzzi Bõrkanapé', 'Luxus olasz bõrkanapé maximális kényelemért.', 699999.99, 5, 12);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Estée Lauder Advanced Night Repair', 'Intenzív éjszakai arcszérum a fiatalos bõrért.', 39999.99, 50, 13);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('GHD Gold Hajvasaló', 'Professzionális hajvasaló minden hajtípushoz.', 44999.99, 30, 14);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Concept2 Evezõgép', 'Magas minõségû evezõgép otthoni kardió edzésekhez.', 399999.99, 8, 15);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Apple Watch Series 7', 'A legújabb Apple okosóra egészségügyi és fitness funkciókkal.', 159999.99, 45, 17);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('GAP Gyerek Dzseki', 'Strapabíró és divatos dzseki gyerekeknek.', 14999.99, 70, 18);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('KitchenAid Robotgép', 'Sokoldalú és stílusos robotgép sütéshez és fõzéshez.', 139999.99, 25, 19);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Urban Decay Szemhéjpúder Paletta', 'Sokszínû szemhéjpúder paletta tartós pigmentekkel.', 19999.99, 60, 20);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Google Pixel 6', 'Tiszta Android élmény kiváló kamerával.', 229999.99, 35, 6);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Lenovo ThinkPad X1 Carbon', 'Üzleti laptop kiemelkedõ hordozhatósággal és teljesítménnyel.', 499999.99, 15, 7);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Panasonic 4K Projektor', 'Házimozi projektor lenyûgözõ képminõséggel.', 799999.99, 5, 8);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Tommy Hilfiger Ing', 'Klasszikus szabású ing férfiaknak.', 24999.99, 80, 9);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Michael Kors Táska', 'Elegáns nõi táska mindennapi használatra.', 79999.99, 40, 10);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Weber Gázgrill', 'Prémium gázgrill kerti sütögetéshez.', 159999.99, 20, 11);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Tempur Matrac', 'Memóriahabos matrac a tökéletes alvásért.', 299999.99, 10, 12);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Clinique Hidratáló', 'Intenzív hidratáló krém minden bõrtípusra.', 12999.99, 100, 13);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Remington Hajformázó', 'Többfunkciós hajformázó különbözõ stílusokhoz.', 17999.99, 55, 14);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Adidas Edzõcipõ', 'Sokoldalú edzõcipõ különbözõ sportokhoz.', 29999.99, 75, 15);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Coleman Sátor', '4 személyes sátor kempingezéshez.', 49999.99, 30, 16);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Garmin Fenix 6', 'Multisport GPS okosóra outdoor sportolóknak.', 219999.99, 25, 17);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Disney Jégvarázs Jelmez', 'Elsa jelmez gyerekeknek farsangra vagy jelmezbálra.', 8999.99, 50, 18);
+
+INSERT INTO TERMEK (Nev, Leiras, AktualisAr, Keszlet, KategoriaID)
+VALUES ('Ninja Airfryer', 'Egészséges sütés minimális olajjal.', 39999.99, 40, 19);
 
 INSERT INTO UGYFEL (Nev, Email, Telefonszam, LakcimID) VALUES ('Varga Bence', 'bence.varga1@example.com', '+36202908499', 92);
 INSERT INTO UGYFEL (Nev, Email, Telefonszam, LakcimID) VALUES ('Szabó Attila', 'attila.szabó2@example.com', '+36306194082', 52);
