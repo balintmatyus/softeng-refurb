@@ -1,4 +1,4 @@
-# 1.1 rendeléskezelő rendszer funkcióinak áttekintése
+# 1.1 A rendeléskezelő rendszer funkcióinak áttekintése
 
 Ebben a fejezetben részletesen áttekintjük a fejlesztendő rendeléskezelő rendszer főbb funkcióit. Ez az áttekintés segít abban, hogy átfogó képet kapj a projektről, és megértsd, milyen komplex feladattal állsz szemben. Ne aggódj, ha most még bonyolultnak tűnik – a kurzus során lépésről lépésre haladva fogod elsajátítani a szükséges ismereteket és készségeket.
 
