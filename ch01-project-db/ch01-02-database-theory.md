@@ -1,4 +1,4 @@
-# 1.3 Adatbázis tervezés elméleti alapjai
+# 1.2 Adatbázis tervezés elméleti alapjai
 
 A következőkben egy elméleti összefoglalót olvashatsz az adatbázis tervezéssel kapcsolatban. Az SQL kódok mintaként szerepelnek, a projekthez tartozó tényleges adatbázis tervezéssel később foglalkozunk.
 

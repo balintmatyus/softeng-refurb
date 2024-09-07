@@ -1,33 +1,4 @@
-# 1.1 Projektbemutató és motiváció
-
-## Bevezetés
-
-A Software Engineering kurzus keretében egy izgalmas gyakorlati projektet fogsz megvalósítani: egy rendeléskezelő rendszert fogsz fejleszteni. Ez a projekt kiváló lehetőséget nyújt számodra, hogy valós üzleti problémára adj informatikai megoldást, miközben elsajátítod a szükséges technikai készségeket.
-
-## A rendeléskezelő rendszer jelentősége a vállalkozások számára
-
-A rendeléskezelő rendszer kritikus fontosságú eszköz minden vállalkozás számára, függetlenül annak méretétől vagy tevékenységi körétől. Egy ilyen szolgáltatás további szolgáltatásokhoz is kapcsolódhat:
-
-1. **Pénzügyi nyilvántartás:** Pontos és naprakész információt szolgáltat a vállalkozás bevételeiről.
-2. **Ügyfélkapcsolatok kezelése:** Lehetővé teszi az ügyféladatok rendszerezett tárolását és kezelését.
-3. **Készletgazdálkodás:** Támogatja a termékek nyilvántartását.
-4. **Döntéstámogatás:** A beérkező rendelések alapján elemzések, kimutatások készíthetők, amelyek segítik az üzleti döntéshozatalt.
-
-## Miért hasznos a projekt számodra?
-
-A rendeléskezelő rendszer fejlesztése során szerzett tapasztalataidat közvetlenül hasznosíthatod a munkaerőpiacon. A projekt több szempontból is motiváló lehet:
-
-1. **Valós üzleti probléma megoldása:** A fejlesztett rendszered közvetlenül kapcsolódik a vállalkozások mindennapi működéséhez.
-2. **Portfólió építése:** A projekted referenciamunkaként szolgálhat a jövőbeli álláskeresés során.
-3. **Technológiai stack relevanciája:** A használt technológiák (C#, .NET, Entity Framework, MS SQL) széles körben elterjedtek az iparágban.
-4. **Komplex készségfejlesztés:** A projekt nem csak programozási, hanem adatbázis-kezelési, felhasználói felület tervezési és üzleti folyamat modellezési készségeidet is fejleszti.
-5. **Azonnali visszacsatolás:** A fejlesztés során azonnal láthatod munkád eredményét, ami növeli a motivációdat.
-
-A rendeléskezelő rendszer fejlesztése során nem csak technikai készségeidet fejleszted, hanem betekintést nyersz egy valós üzleti alkalmazás működésébe is. Ez a projekt ideális híd az elméleti tudásod és a gyakorlati alkalmazás között, felkészítve téged a szoftverfejlesztői karrier kihívásaira.
-
-Vágjunk bele együtt ebbe az izgalmas projektbe!
-
-# 1.2 rendeléskezelő rendszer funkcióinak áttekintése
+# 1.1 rendeléskezelő rendszer funkcióinak áttekintése
 
 Ebben a fejezetben részletesen áttekintjük a fejlesztendő rendeléskezelő rendszer főbb funkcióit. Ez az áttekintés segít abban, hogy átfogó képet kapj a projektről, és megértsd, milyen komplex feladattal állsz szemben. Ne aggódj, ha most még bonyolultnak tűnik – a kurzus során lépésről lépésre haladva fogod elsajátítani a szükséges ismereteket és készségeket.
 

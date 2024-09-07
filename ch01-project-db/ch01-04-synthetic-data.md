@@ -1,4 +1,4 @@
-# 1.5 Adatbázis feltöltése szintetikus adatokkal
+# 1.4 Adatbázis feltöltése szintetikus adatokkal
 
 Az adatbázisod struktúrájának kialakítása után a következő lépés, hogy feltöltsd azt tesztadatokkal. Egyelőre csak a *cím*, az *ügyfél*, a *termék kategória* és a *termék* táblákat szeretnénk feltölteni, a rendelések rögzítésére a Windows Forms alkalmazásunkat fogjuk használni.
 A szintetikus adatok generálása azonban időigényes feladat lehet, különösen, ha sok táblád van, vagy nagy mennyiségű adatra van szükséged. Szerencsére a ChatGPT segítségével jelentősen felgyorsíthatod ezt a folyamatot. Lássuk, hogyan!

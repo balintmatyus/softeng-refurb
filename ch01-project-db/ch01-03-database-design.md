@@ -1,4 +1,4 @@
-# 1.4 A számlázórendszer adatbázisának tervezése
+# 1.3 A számlázórendszer adatbázisának tervezése
 
 Ebben a fejezetben végigvezetlek a rendeléskezelő rendszerünk adatbázisának tervezési folyamatán. Az adatbázis tervezése kulcsfontosságú lépés az alkalmazásfejlesztés során, hiszen ez alapozza meg a rendszer hatékony működését és bővíthetőségét. Lépésről lépésre haladunk, hogy egy jól strukturált, normalizált adatbázist hozzunk létre.
 
