@@ -82,7 +82,7 @@ Kövesd ezeket a lépéseket:
 2. Írd be a következő parancsot, behelyettesítve a korábban kimásolt Connection String-et:
 
 ```
-Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RendelesDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir Data -Context RendelesDbContext -DataAnnotations -Force
+Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RendelesDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -ContextDir Data -Context RendelesDbContext -DataAnnotations -Force -NoPluralize
 ```
 
 Ez a parancs a következőket csinálja:
@@ -93,6 +93,7 @@ Ez a parancs a következőket csinálja:
 - RendelesDbContext néven hozza létre a DbContext osztályt
 - Használja a Data Annotations attribútumokat a modellek definiálásához
 - A -Force kapcsoló azt jelenti, hogy ha már léteznek fájlok, azokat felülírja
+- A -NoPluralize megelőzi, hogy az angol nyelvtan szerinti többesszámra végződő szavak módosítva legyenek.
 
 ## Generált eredmény áttekintése
 
