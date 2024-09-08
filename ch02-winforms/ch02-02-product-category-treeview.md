@@ -91,7 +91,7 @@ public TermekKategoriaForm()
 }
 ```
 
-## Főkategóriák betöltése
+## Kategóriák rekurzív betöltése
 
 Most implementáljuk a `LoadKategoriak` metódust, amely betölti a kategóriákat az adatbázisból és megjeleníti őket a TreeView-ban.
 
@@ -125,7 +125,7 @@ private void LoadKategoriak()
 
 Ez a metódus létrehoz egy TreeNode-ot az adott kategóriához, majd megkeresi annak összes alkategóriáját. Minden alkategóriához rekurzívan meghívja saját magát, így építve fel a teljes fa struktúrát.
 
-## TreeView feltöltése az alkategóriákkal (rekurzívan)
+## CreateTreeNode implementálása
 
 Most implementáljuk a `CreateTreeNode` metódust, amely rekurzívan létrehozza a TreeNode-okat a kategóriákhoz és azok alkategóriáihoz:
 
