@@ -1,4 +1,4 @@
-# 2.2 CRUD műveletek és DataBinding TreeView segítségével (Termékkategóriák adatainak kezelése)
+# 2.3 CRUD műveletek és DataBinding TreeView segítségével (Termékkategóriák adatainak kezelése)
 
 Ebben a fejezetben a rendeléskezelő rendszerünk egy fontos részét fogjuk megvalósítani: a termékkategóriák kezelését. Ez a funkció lehetővé teszi, hogy a felhasználók megtekinthessék, szerkeszthessék a termékkategóriákat egy könnyen használható, fa struktúrájú felületen keresztül. A fejlesztés során megismerkedünk a Windows Forms alkalmazások több fontos koncepciójával, beleértve a többablakos alkalmazások létrehozását, a TreeView vezérlő használatát, valamint az adatkötést (data binding).
 
