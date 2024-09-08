@@ -1,6 +1,6 @@
 # 2.1 Windows Forms projekt létrehozása és Scaffold-Db használata
 
-Ebben az alfejezetben egy izgalmas utazásra indulunk: létrehozzuk a rendeléskezelő rendszerünk alapját képező Windows Forms projektet, és összekapcsoljuk azt az előző fejezetben megtervezett adatbázisunkkal. Ez a lépés kulcsfontosságú a fejlesztési folyamatunkban, hiszen itt kezdjük el összekapcsolni az adatbázis-réteget a felhasználói felülettel.
+Ebben az alfejezetben létrehozzuk a rendeléskezelő rendszerünk alapját képező Windows Forms projektet, és összekapcsoljuk azt az előző fejezetben megtervezett adatbázisunkkal. Ez a lépés kulcsfontosságú a fejlesztési folyamatunkban, hiszen itt kezdjük el összekapcsolni az adatbázis-réteget a felhasználói felülettel.
 
 ## Windows Forms projekt létrehozása .NET 8 környezetben Visual Studio segítségével
 
@@ -8,7 +8,7 @@ Először is hozzuk létre a Windows Forms projektünket. Kövesd az alábbi lé
 
 1. Indítsd el a Visual Studio 2022-t.
 2. Kattints a "Create a new project" (Új projekt létrehozása) gombra.
-3. A keresőmezőbe írd be: "Windows Forms"
+3. A keresőmezőbe írd be: "Windows Forms C#"
 4. Válaszd ki a "Windows Forms App (.NET)" sablont C# nyelvvel. Fontos, hogy ne a .NET Framework verziót válaszd! ![Create a new project](./img/image.png)
 
 5. Kattints a "Next" (Tovább) gombra.
