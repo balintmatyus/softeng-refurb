@@ -30,7 +30,7 @@ Ez a struktúra lehetővé teszi, hogy tetszőleges mélységű kategória hiera
 
 Most, hogy felidéztük az adatbázis struktúrát, láthatjuk, miért is ideális választás a TreeView vezérlő ennek a hierarchikus struktúrának a megjelenítésére. A TreeView természetes módon képes fa struktúrájú adatok megjelenítésére, ahol minden csomópontnak lehetnek gyermek csomópontjai. Ez tökéletesen illeszkedik a kategóriáink szerkezetéhez.
 
-![TreeView kép](./02-img/image.png)
+![TreeView kép](./03-img/image.png)
 
 Fontos azonban megjegyezni, hogy bár a TreeView kiválóan alkalmas a hierarchikus adatok megjelenítésére, nem rendelkezik beépített adatkötési (data binding) funkcióval a BindingSource-hoz. Ez azt jelenti, hogy nem tudjuk egyszerűen hozzákötni az adatforrásunkat (például egy List<T>-t) a TreeView-hoz, és elvárni, hogy az automatikusan feltöltse és frissítse a tartalmát.
 
@@ -52,7 +52,7 @@ Most, hogy létrehoztuk az új űrlapot, adjuk hozzá a szükséges vezérlőele
 
 Az űrlap most már nagyjából így kell kinézzen:
 
-![TermekKategoriaForm](./02-img/image-1.png)
+![TermekKategoriaForm](./03-img/image-1.png)
 
 ## A főmenü létrehozása (Form1)
 
@@ -386,7 +386,7 @@ Ez a megoldás jól szemlélteti, hogyan lehet hatékonyan kezelni a hierarchiku
 
 # Végeredmény
 
-![Végeredmény](./02-img/image-2.png)
+![Végeredmény](./03-img/image-2.png)
 
 <details><summary>A teljes megoldás egyben</summary>
 
