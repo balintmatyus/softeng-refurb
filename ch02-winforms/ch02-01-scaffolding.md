@@ -9,11 +9,11 @@ Először is hozzuk létre a Windows Forms projektünket. Kövesd az alábbi lé
 1. Indítsd el a Visual Studio 2022-t.
 2. Kattints a "Create a new project" (Új projekt létrehozása) gombra.
 3. A keresőmezőbe írd be: "Windows Forms C#"
-4. Válaszd ki a "Windows Forms App (.NET)" sablont C# nyelvvel. Fontos, hogy ne a .NET Framework verziót válaszd! ![Create a new project](./img/image.png)
+4. Válaszd ki a "Windows Forms App (.NET)" sablont C# nyelvvel. Fontos, hogy ne a .NET Framework verziót válaszd! ![Create a new project](./01-img/image.png)
 
 5. Kattints a "Next" (Tovább) gombra.
 6. Add meg a projekt nevét: "Rendeles-Forms-{NEPTUN}"
-7. Válassz egy megfelelő helyet a projektnek a számítógépeden. ![Configure your new project](./img/image-1.png)
+7. Válassz egy megfelelő helyet a projektnek a számítógépeden. ![Configure your new project](./01-img/image-1.png)
 
 8.  Kattints a "Next" gombra.
 9.  A következő ablakban válaszd ki a ".NET 8.0 (Long-term support)" opciót.
@@ -32,7 +32,7 @@ Most pedig kövesd ezeket a lépéseket a szükséges csomagok telepítéséhez:
    - Microsoft.EntityFrameworkCore.SqlServer
    - Microsoft.EntityFrameworkCore.Tools
    - Microsoft.EntityFrameworkCore.Design
-![NuGet Package Manager](./img/image-2.png)
+![NuGet Package Manager](./01-img/image-2.png)
 4. Mindegyik csomagnál válaszd ki a legújabb stabil verziót, amely kompatibilis a .NET 8-cal.
 
 Ezek a csomagok lehetővé teszik számunkra, hogy használjuk az Entity Framework Core-t, ami egy modern objektum-relációs leképező (ORM) keretrendszer. De miért van szükségünk ezekre a konkrét csomagokra? Az EntityFrameworkCore.SqlServer csomag tartalmazza az SQL Server adatbázishoz való kapcsolódáshoz szükséges kódokat. Az EntityFrameworkCore.Tools és EntityFrameworkCore.Design csomagok pedig olyan eszközöket biztosítanak, amelyek segítenek az adatbázis-műveletek végrehajtásában és a modellek generálásában, amit a következő lépésekben fogunk használni. Ezek a csomagok együttesen teszik lehetővé, hogy hatékonyan és biztonságosan kommunikáljunk az adatbázisunkkal, anélkül hogy minden SQL lekérdezést nekünk kellene megírnunk.
@@ -102,7 +102,7 @@ A Scaffold-DbContext parancs lefutása után a Visual Studio Solution Explorer-�
 1. Models: Itt találod az egyes adatbázis tábláknak megfelelő C# osztályokat (pl. Ugyfel.cs, Termek.cs, stb.)
 2. Data: Itt található a RendelesDbContext.cs fájl, ami az Entity Framework Core DbContext osztálya.
 
-![Scaffolding után](./img/image-3.png)
+![Scaffolding után](./01-img/image-3.png)
 
 Nyisd meg és nézd át ezeket a fájlokat. Látni fogod, hogy az osztályok tulajdonságai megfelelnek az adatbázis táblák oszlopainak, és a kapcsolatok is megfelelően vannak reprezentálva. A -DataAnnotations kapcsolónak köszönhetően az osztályok és tulajdonságok különböző attribútumokkal vannak ellátva. Nézzük meg például az Ugyfel.cs fájlt:
 
