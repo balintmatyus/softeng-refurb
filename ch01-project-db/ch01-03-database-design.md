@@ -74,8 +74,8 @@ Ne feledd, hogy a jó követelménymeghatározás a sikeres adatbázis-tervezés
 
 **1. feladat:** A követelmények alapján azonosítsd a rendszer főbb entitásait (tábláit). Ha felsoroltad, hasonlítsd össze megoldásodat a javasolt megoldással.
 
-<details>
-<summary>Javasolt megoldás</summary>
+<!--<details>
+<summary>Javasolt megoldás</summary>-->
 
 Főbb entitások:
 
@@ -86,12 +86,12 @@ Főbb entitások:
 * Termékkategóriák
 * Címek
 
-</details><br/>
+<!--</details><br/>-->
 
 **2. feladat:** Az azonosított entitásokhoz határozd meg a szükséges attribútumokat (mezőket). Gondold át, hogy melyik mezők lesznek elsődleges- és idegenkulcsok. Milyen adattípusokat használnál az egyes mezők esetén?
 
 <details>
-<summary>Javasolt megoldás</summary>-->
+<summary>Javasolt megoldás</summary>
 
 <div class="mermaid">
 
@@ -202,8 +202,8 @@ CREATE TABLE RENDELES (
 )
 ```
 
-<details>
-<summary>Javasolt megoldás</summary>
+<!--<details>
+<summary>Javasolt megoldás</summary>-->
 
 ```sql
 -- CIM tábla létrehozása
@@ -290,4 +290,4 @@ CREATE TABLE RENDELES_TETEL (
     CONSTRAINT CHK_RENDELES_TETEL_BruttoAr CHECK (BruttoAr >= 0)
 );
 ```
-</details><br/>
+<!--</details><br/>-->
