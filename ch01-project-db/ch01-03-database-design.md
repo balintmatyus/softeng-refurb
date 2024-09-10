@@ -93,8 +93,6 @@ Főbb entitások:
 <!--<details>
 <summary>Javasolt megoldás</summary>-->
 
-<div class="mermaid">
-
 ```mermaid
 erDiagram
     UGYFEL ||--o{ RENDELES : "leadja"
@@ -159,8 +157,6 @@ erDiagram
         INT SzuloKategoriaID FK
     }
 ```
-
-</div>
 
 <!--</details><br/>-->
 
