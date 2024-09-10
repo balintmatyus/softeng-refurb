@@ -90,7 +90,7 @@ Főbb entitások:
 
 **2. feladat:** Az azonosított entitásokhoz határozd meg a szükséges attribútumokat (mezőket). Gondold át, hogy melyik mezők lesznek elsődleges- és idegenkulcsok. Milyen adattípusokat használnál az egyes mezők esetén?
 
-<!--<details>
+<details>
 <summary>Javasolt megoldás</summary>-->
 
 <div class="mermaid">
@@ -160,7 +160,7 @@ erDiagram
 
 </div>
 
-<!--</details><br/>-->
+</details><br/>
 
 **3. feladat:** A következő megkötések figyelembevételével hozd létre tervező vagy SQL script segítségével az adattáblákat:
 * Minden tábla elsődleges kulcsa identitás mező legyen (automatikus számláló, IDENTITY).
