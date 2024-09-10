@@ -93,6 +93,8 @@ Főbb entitások:
 <!--<details>
 <summary>Javasolt megoldás</summary>-->
 
+<div class="mermaid">
+
 ```mermaid
 erDiagram
     UGYFEL ||--o{ RENDELES : "leadja"
@@ -157,6 +159,9 @@ erDiagram
         INT SzuloKategoriaID FK
     }
 ```
+
+</div>
+
 <!--</details><br/>-->
 
 **3. feladat:** A következő megkötések figyelembevételével hozd létre tervező vagy SQL script segítségével az adattáblákat:
