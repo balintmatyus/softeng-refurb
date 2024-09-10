@@ -20,6 +20,11 @@ Eredményes munkát és sikeres tanulást kívánunk!
 
 A szerzők
 
+## Általános
+1. [Azure for Students regisztráció](./general/ingyenes_hallgatoi_azure_fiok_regisztralasa/index.md)
+2. [Azure SQL adatbázis létrehozása](./general/azure_sql_adatbazis_letrehozasa_2022/index.md)
+3. [SQL generálása SSMS-ből adatbázis létrehozására](./general/sql_generalasa_ssms-bol_adatbazis_letrehozasara/index.md)
+
 ## 1. fejezet
 1. [A rendeléskezelő rendszer funkcióinak áttekintése](./ch01-project-db/ch01-01-project-intro.md)
 2. [Adatbázis-tervezés elméleti alapjai](./ch01-project-db/ch01-02-database-theory.md)
@@ -33,3 +38,4 @@ A szerzők
 4. Adatok validálása (Ügyfelek adatainak kezelése)
 5. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
 6. Adatok exportálása Excelbe
+
