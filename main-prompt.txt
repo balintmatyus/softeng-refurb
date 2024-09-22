@@ -1,7 +1,0 @@
-Cél: Generálj tanulási tervet egy 6 hetes kurzusnak, amely során alapképzéses gazdaságinformatikus hallgatók elsajátíthatják egy gyakorlati projekt keretében az adatbázison alapuló, CRUD műveleteket támogató Windows Forms alkalmazás fejlesztéséhez szükséges ismereteket. Választott fejlesztő környezet: Visual Studio C# nyelvben .NET 8 keretrendszerrel, EntityFramework Database-first megközelítéssel. 
-
-Előzmények: Már eltöltöttek egy szemesztert C# nyelvben, Windows Forms technológiával, valamint MS SQL adatbázist használva az SQL nyelvet, így nem kell teljesen az alapoktól kezdeni.
-
-A tanulási tervnek learning-by-doing megközelítést kell alkalmaznia.
-
-Választott téma: számlázó rendszer.
