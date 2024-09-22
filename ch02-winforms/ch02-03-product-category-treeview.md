@@ -97,7 +97,7 @@ Most implementáljuk a `LoadKategoriak` metódust, amely betölti a kategóriák
 
 Ez a metódus először lekérdezi az összes kategóriát az adatbázisból, majd kiválasztja azokat, amelyeknek nincs szülőkategóriájuk (azaz a főkategóriákat). Ezután minden főkategóriához létrehoz egy TreeNode-ot a `CreateTreeNode` metódus segítségével.
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private void LoadKategoriak()
@@ -121,7 +121,7 @@ private void LoadKategoriak()
     }
 }
 ```
-</details><br/>
+
 
 Ez a metódus létrehoz egy TreeNode-ot az adott kategóriához, majd megkeresi annak összes alkategóriáját. Minden alkategóriához rekurzívan meghívja saját magát, így építve fel a teljes fa struktúrát.
 
@@ -129,7 +129,7 @@ Ez a metódus létrehoz egy TreeNode-ot az adott kategóriához, majd megkeresi 
 
 Most implementáljuk a `CreateTreeNode` metódust, amely rekurzívan létrehozza a TreeNode-okat a kategóriákhoz és azok alkategóriáihoz:
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private TreeNode CreateTreeNode(TermekKategoria kategoria, List<TermekKategoria> osszeKategoria)
@@ -150,7 +150,6 @@ private TreeNode CreateTreeNode(TermekKategoria kategoria, List<TermekKategoria>
     return node;
 }
 ```
-</details>
 
 Figyeld meg, hogy a TreeNode `Tag` tulajdonságát használjuk arra, hogy eltároljuk az adott csomóponthoz tartozó `TermekKategoria` objektumot. Ez lehetővé teszi számunkra, hogy később könnyen hozzáférjünk a kategória adataihoz, amikor a felhasználó kiválaszt egy csomópontot.
 
@@ -164,7 +163,7 @@ Először adjuk hozzá az eseménykezelőt a TreeView-hoz. Ezt megtehetjük a Pr
 1. Ellenőrizzük, hogy a kiválasztott csomópont `Tag` tulajdonsága `TermekKategoria` típusú-e.
 2. Ha igen, akkor betöltjük a kategória nevét és leírását a megfelelő TextBox-okba.
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private void treeViewKategoriak_AfterSelect(object sender, TreeViewEventArgs e)
@@ -176,7 +175,6 @@ private void treeViewKategoriak_AfterSelect(object sender, TreeViewEventArgs e)
     }
 }
 ```
-</details>
 
 ## Változtatások mentése (hibakezeléssel)
 
@@ -188,7 +186,7 @@ Most, hogy a felhasználó látja és szerkesztheti a kiválasztott kategória a
 4. Sikeres mentés esetén megerősítő üzenetet jelenítünk meg, és újratöltjük a kategóriákat a TreeView-ban.
 5. Ha bármilyen hiba történik a folyamat során, azt egy kivételkezelő blokkban kezeljük, és hibaüzenetet jelenítünk meg a felhasználónak.
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private void btnMentes_Click(object sender, EventArgs e)
@@ -219,7 +217,6 @@ private void btnMentes_Click(object sender, EventArgs e)
     }
 }
 ```
-</details>
 
 ## Új testvér létrehozása
 
@@ -229,7 +226,7 @@ Az új testvér kategória létrehozásához implementáljuk az "Új testvér" g
 3. Töröljük a név és leírás mezők tartalmát, hogy a felhasználó új adatokat adhasson meg.
 4. Az `isNewItem` változót `true`-ra állítjuk, jelezve, hogy új elem létrehozása van folyamatban.
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private void btnUjTestver_Click(object sender, EventArgs e)
@@ -246,7 +243,7 @@ private void btnUjTestver_Click(object sender, EventArgs e)
     }
 }
 ```
-</details>
+
 
 ## Új gyermek kategória létrehozása
 
@@ -254,7 +251,7 @@ Az új gyermek kategória létrehozása hasonló az új testvér létrehozásáh
 
 Ez a kód nagyon hasonló az új testvér létrehozásához, de a fő különbség az, hogy az új kategória `SzuloKategoriaId`-je a kiválasztott kategória `KategoriaId`-je lesz.
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private void btnUjGyermek_Click(object sender, EventArgs e)
@@ -271,7 +268,6 @@ private void btnUjGyermek_Click(object sender, EventArgs e)
     }
 }
 ```
-</details>
 
 ## Mentés funkció módosítása
 
@@ -282,7 +278,7 @@ Most, hogy lehetőségünk van új kategóriákat létrehozni, módosítanunk ke
 3. Ha nem új elem, akkor frissítjük a kiválasztott kategória adatait.
 4. Mentjük a változtatásokat, frissítjük a TreeView-t, és visszaállítjuk az `isNewItem` változót `false` értékre.
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private void btnMentes_Click(object sender, EventArgs e)
@@ -318,13 +314,12 @@ private void btnMentes_Click(object sender, EventArgs e)
     }
 }
 ```
-</details>
 
 ## Kategória törlése
 
 Végül implementáljuk a kategória törlése funkciót. Ez egy kicsit összetettebb, mert rekurzívan kell törölnünk az összes alkategóriát is. Íme a "Törlés" gomb `Click` eseménykezelője:
 
-<details><summary>Mintakód megjelenítése</summary>
+### Mintakód:
 
 ```csharp
 private void btnTorles_Click(object sender, EventArgs e)
@@ -371,7 +366,7 @@ private void DeleteKategoriaAndChildren(TermekKategoria kategoria)
     _context.TermekKategoria.Remove(kategoria);
 }
 ```
-</details><br/>
+
 
 Ez a kód:
 
@@ -388,7 +383,7 @@ Ez a megoldás jól szemlélteti, hogyan lehet hatékonyan kezelni a hierarchiku
 
 ![Végeredmény](./03-img/image-2.png)
 
-<details><summary>A teljes megoldás egyben</summary>
+### Mintakód:
 
 ```csharp
 using Rendeles_Forms_y7qbqz.Data;
@@ -566,4 +561,3 @@ namespace Rendeles_Forms_y7qbqz
     }
 }
 ```
-</details>

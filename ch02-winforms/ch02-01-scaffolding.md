@@ -12,7 +12,7 @@ Először is hozzuk létre a Windows Forms projektünket. Kövesd az alábbi lé
 4. Válaszd ki a "Windows Forms App (.NET)" sablont C# nyelvvel. Fontos, hogy ne a .NET Framework verziót válaszd! ![Create a new project](./01-img/image.png)
 
 5. Kattints a "Next" (Tovább) gombra.
-6. Add meg a projekt nevét: "Rendeles-Forms-{NEPTUN}"
+6. Add meg a projekt nevét: "Rendeles_Forms_{NEPTUN}"
 7. Válassz egy megfelelő helyet a projektnek a számítógépeden. ![Configure your new project](./01-img/image-1.png)
 
 8.  Kattints a "Next" gombra.
