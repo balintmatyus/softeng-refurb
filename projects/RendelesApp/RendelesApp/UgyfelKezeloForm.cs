@@ -34,7 +34,11 @@ namespace RendelesApp
         private void button1_Click(object sender, EventArgs e)
         {
             UgyfelSzerkesztesForm ujUgyfelForm = new UgyfelSzerkesztesForm();
-            ujUgyfelForm.ShowDialog();
+            if (ujUgyfelForm.ShowDialog() == DialogResult.OK) {
+                _context.Ugyfel.Load();
+                dataGridView1.Update();
+                dataGridView1.Refresh();
+            };
 
         }
 
@@ -52,7 +56,7 @@ namespace RendelesApp
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows[0].DataBoundItem is Ugyfel ugyfel)
+            if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].DataBoundItem is Ugyfel ugyfel)
             {
                 UgyfelSzerkesztesForm szerkesztesForm = new UgyfelSzerkesztesForm(ugyfel);
                 if (szerkesztesForm.ShowDialog() == DialogResult.OK)
