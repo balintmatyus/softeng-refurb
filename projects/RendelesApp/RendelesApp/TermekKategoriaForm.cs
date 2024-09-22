@@ -14,7 +14,6 @@ namespace RendelesApp
 {
     public partial class TermekKategoriaForm : Form
     {
-
         private RendelesDbContext _context;
         private TermekKategoria newKategoria = null!;
         private bool isNewItem = false;

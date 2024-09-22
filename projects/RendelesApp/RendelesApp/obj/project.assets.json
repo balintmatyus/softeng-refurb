@@ -4244,11 +4244,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\balin\\source\\repos\\RendelesApp\\RendelesApp\\RendelesApp.csproj",
+      "projectUniqueName": "D:\\work\\softeng-refurb\\projects\\RendelesApp\\RendelesApp\\RendelesApp.csproj",
       "projectName": "RendelesApp",
-      "projectPath": "C:\\Users\\balin\\source\\repos\\RendelesApp\\RendelesApp\\RendelesApp.csproj",
+      "projectPath": "D:\\work\\softeng-refurb\\projects\\RendelesApp\\RendelesApp\\RendelesApp.csproj",
       "packagesPath": "C:\\Users\\balin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\balin\\source\\repos\\RendelesApp\\RendelesApp\\obj\\",
+      "outputPath": "D:\\work\\softeng-refurb\\projects\\RendelesApp\\RendelesApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\balin\\AppData\\Roaming\\NuGet\\NuGet.Config",

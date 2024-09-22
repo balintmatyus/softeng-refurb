@@ -12,5 +12,11 @@ namespace RendelesApp
             TermekKategoriaForm termekKategoriaForm = new TermekKategoriaForm();
             termekKategoriaForm.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UgyfelKezeloForm kezeloForm = new();
+            kezeloForm.ShowDialog();
+        }
     }
 }
