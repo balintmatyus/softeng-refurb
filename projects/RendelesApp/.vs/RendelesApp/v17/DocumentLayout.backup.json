@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{888675D0-BBE4-4690-A058-A8169A4672DC}|RendelesApp\\RendelesApp.csproj|solutionrelative:rendelesapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{888675D0-BBE4-4690-A058-A8169A4672DC}|RendelesApp\\RendelesApp.csproj|c:\\users\\balin\\source\\repos\\rendelesapp\\rendelesapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{888675D0-BBE4-4690-A058-A8169A4672DC}|RendelesApp\\RendelesApp.csproj|C:\\Users\\balin\\source\\repos\\RendelesApp\\rendelesapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{888675D0-BBE4-4690-A058-A8169A4672DC}|RendelesApp\\RendelesApp.csproj|solutionrelative:rendelesapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -26,12 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,7 +36,7 @@
               "RelativeDocumentMoniker": "RendelesApp\\TermekKategoriaForm.cs",
               "ToolTip": "C:\\Users\\balin\\source\\repos\\RendelesApp\\RendelesApp\\TermekKategoriaForm.cs",
               "RelativeToolTip": "RendelesApp\\TermekKategoriaForm.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAewEUAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAswJUAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-17T20:30:54.777Z",
               "EditorCaption": ""
@@ -79,8 +75,7 @@
               "ToolTip": "C:\\Users\\balin\\source\\repos\\RendelesApp\\RendelesApp\\Form1.cs [Design]",
               "RelativeToolTip": "RendelesApp\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T20:10:24.137Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-09-17T20:10:24.137Z"
             }
           ]
         }
