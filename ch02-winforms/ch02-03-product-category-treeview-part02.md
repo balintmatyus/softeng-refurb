@@ -186,3 +186,7 @@ private void treeViewKategoriak_MouseDown(object sender, MouseEventArgs e)
 
 
 Ezekkel a funkciókkal egy komplett, felhasználóbarát termékkategória-kezelő rendszert hoztál létre. A gyakorlat során megtanultad, hogyan lehet hatékonyan kezelni a hierarchikus adatstruktúrákat Windows Forms környezetben, valamint hogyan lehet összekapcsolni a felhasználói felületet az adatbázisműveletekkel. Ne feledd, hogy a hibakezelés és a felhasználói visszajelzések fontos részei egy professzionális alkalmazásnak, így érdemes ezekre is figyelmet fordítani a fejlesztés során.
+
+> **Megjegyzés:**
+>
+> Highlights information that users should take into account, even when skimming.

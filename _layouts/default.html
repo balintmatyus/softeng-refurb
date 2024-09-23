@@ -9,10 +9,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
     <!-- Syntax highlighting CSS hozzáadása -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <style>
+      .content-container {
+        max-width: 800px; /* A tartalom maximális szélessége */
+        margin: 0 auto;   /* Középre igazítás */
+        padding: 20px;    /* Belső margó */
+      }
+
+      /* Alapértelmezett stílus az összes blockquote-hoz */
+      blockquote {
+        position: relative;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-left: 5px solid #d0d7de;
+        background-color: #f6f8fa;
+        border-radius: 6px;
+      }
+
+      /* Stílus a "Megjegyzés" blockquote-okhoz */
+      blockquote p:first-child strong:contains("Megjegyzés:") {
+        color: #0550ae;
+      }
+
+      blockquote p:first-child strong:contains("Figyelmeztetés:") {
+        color: #cf222e;
+      }
+
+      blockquote p:first-child strong:contains("Tipp:") {
+        color: #116329;
+      }
+
+      /* Színezés a blockquote-okhoz a szöveg alapján */
+      blockquote p:first-child strong:contains("Megjegyzés:") ~ * {
+        color: #24292f;
+      }
+
+      blockquote p:first-child strong:contains("Figyelmeztetés:") ~ * {
+        color: #cf222e;
+      }
+
+      blockquote p:first-child strong:contains("Tipp:") ~ * {
+        color: #116329;
+      }
+    </style>
   </head>
   <body>
     <!-- Tartalom konténer a megfelelő osztállyal -->
-    <div class="markdown-body">
+    <div class="markdown-body content-container">
       {% if site.title and site.title != page.title %}
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
       {% endif %}
