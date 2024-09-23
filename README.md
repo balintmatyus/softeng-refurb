@@ -35,7 +35,7 @@ A szerzők
 1. [Windows Forms projekt létrehozása és Scaffold-Db használata](./ch02-winforms/ch02-01-scaffolding.md)
 2. [Emlékeztető: CRUD műveletek végrehajtása egy táblán DataGridView segítségével](./ch02-winforms/ch02-02-ugyfelek-egyszeru.md)
 3. [CRUD műveletek és DataBinding TreeView segítségével (Termékkategóriák adatainak kezelése)](./ch02-winforms/ch02-03-product-category-treeview.md)
-4. Adatok validálása (Ügyfelek adatainak kezelése)
+4. [Adatok validálása (Ügyfelek adatainak kezelése)](./ch02-winforms/ch02-04-user-management.md)
 5. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
 6. Adatok exportálása Excelbe
 

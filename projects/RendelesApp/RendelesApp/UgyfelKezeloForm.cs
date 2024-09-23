@@ -36,8 +36,6 @@ namespace RendelesApp
             UgyfelSzerkesztesForm ujUgyfelForm = new UgyfelSzerkesztesForm();
             if (ujUgyfelForm.ShowDialog() == DialogResult.OK) {
                 _context.Ugyfel.Load();
-                dataGridView1.Update();
-                dataGridView1.Refresh();
             };
 
         }
