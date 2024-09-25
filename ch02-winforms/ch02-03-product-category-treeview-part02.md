@@ -163,24 +163,14 @@ Tipp: A törlés előtt érdemes ellenőrizni, hogy vannak-e termékek a töröl
 Rontja a felhasználói élményt, hogy a jobb egérgomb lenyomásan nem választja ki az alatta lévő elemet. Ezen segít az alábbi, ChatGPT-vel generált kód:
 
 ```csharp
-private void treeViewKategoriak_MouseDown(object sender, MouseEventArgs e)
-{
-    // Step 1: Check if the right mouse button is clicked
-    if (e.Button == MouseButtons.Right)
-    {
-        // Step 2: Get the node at the mouse position
-        TreeNode clickedNode = treeViewKategoriak.GetNodeAt(e.X, e.Y);
-
-        if (clickedNode != null)
+private void treeViewKategoriak_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            // Step 3: Select the node under the cursor
-            treeViewKategoriak.SelectedNode = clickedNode;
-
-            // Step 4: Show the context menu at the mouse position
-            contextMenuStrip1.Show(treeViewKategoriak, e.Location);
+            if (e.Button == MouseButtons.Right)
+            {
+                treeViewKategoriak.SelectedNode = e.Node;
+                contextMenuStrip1.Show(treeViewKategoriak, e.Location);
+            }
         }
-    }
-}
 ```
 
 
