@@ -36,7 +36,8 @@ A szerzők
 2. [Emlékeztető: CRUD műveletek végrehajtása egy táblán DataGridView segítségével](./ch02-winforms/ch02-02-ugyfelek-egyszeru.md)
 3. [PART 1: CRUD műveletek és DataBinding TreeView segítségével (Termékkategóriák adatainak kezelése)](./ch02-winforms/ch02-03-product-category-treeview-part01.md)
 3. [PART 2: CRUD műveletek és DataBinding TreeView segítségével (Termékkategóriák adatainak kezelése)](./ch02-winforms/ch02-03-product-category-treeview-part02.md)
-4. [Adatok validálása (Ügyfelek adatainak kezelése)](./ch02-winforms/ch02-04-user-management.md)
-5. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
-6. Adatok exportálása Excelbe
+4. [PART 3: Termékkategóriák adatainak XML dokumnetumba mentése](./ch02-winforms/ch02-03-product-category-xml.md)
+5. [Adatok validálása (Ügyfelek adatainak kezelése)](./ch02-winforms/ch02-04-user-management.md)
+6. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
+7. Adatok exportálása Excelbe
 
