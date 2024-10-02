@@ -101,6 +101,18 @@ Bővítsd a helyi menüt egy _XML mentése_ gobbal, és mentsd le XML fába a ka
 - Nézd át a rekurzív algoritmust, amit a `TreeView` építéséhez használtunk
 - Ha kész vagy, mentsd a kategóriákhoz tartozó termékeket is!
 
+A megoldás javasolt lépései:
+- Hozz létre a `ContextMenuStrip`-ben egy új menüpontot, és rendelj hozzá eseménykiszolgálót!
+- Az eseménykiszolgálóban csak
+  - Hozz létre egy `XDocumnet`-et,
+  - adj hozzá deklarációt,
+  - hozz létre egy gyökér elemet "kategoriak" néven, és ezt add a dokumnetumhoz,
+  - végül mentsd le a dokumnetumot, vagy lenelítsd meg az XML-t `MessageBox.Show()`-al.
+- Ezután érdemes megpróbálni lekérdezni LINQ-val a főkategóriákat, és minden főkategóriához létrehozni egy-egy `XElement`-et, amit hozzáadsz a gyökérhaz.
+- Végezetül a `TreeView`-t felépítő rekurzív függvény mintájára el lehet készíteni az alkategóriákat felépítőt.
+- Esetleg használható két egymásba ágyazott `foreach` is, de ez csak két szintű kategóriabontást tud kezelni. 
+
+
 Valami ilyesmi lesz az eredmény -- még termékek nélkül:
 
 ``` xml
