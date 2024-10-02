@@ -45,7 +45,7 @@ xdoc.Add(root);
 Mintakódban ez így néz ki:
 
 ```csharp
-XElement node = new XElement("minta element");
+XElement node = new XElement("mintaelement");
 
 XAttribute testAttribute = new XAttribute("mintaattribútum", "attribótum értéke");
 node.Add(testAttribute);
@@ -61,7 +61,8 @@ for(int i=0;i<10;i++)
 }
 ```
 
-
+> [!WARNING]
+> Element és attribútum nevében nem lehet betűköz!
 
 &#10106; Az `XElement` -nek van egy ilyen konstruktora is, de ez most nem kell:
 
