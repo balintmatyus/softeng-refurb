@@ -1,4 +1,4 @@
-theme: jekyll-theme-minimal
+theme: zendesk/jekyll-theme-zendesk-garden@main
 markdown: GFM
 kramdown:
   syntax_highlighter: rouge
