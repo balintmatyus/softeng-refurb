@@ -1,4 +1,3 @@
-
 theme: zendesk/jekyll-theme-zendesk-garden@main
 markdown: GFM
 kramdown:
@@ -7,4 +6,4 @@ highlighter: rouge
 sidebar:  
   - label: 1. hét
     children:
-      - project-overview
+    - project-overview
