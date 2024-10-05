@@ -3,7 +3,3 @@ markdown: GFM
 kramdown:
   syntax_highlighter: rouge
 highlighter: rouge
-sidebar:
-  - label: "1. hét"
-    children:
-      - project-overview
