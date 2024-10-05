@@ -12,9 +12,9 @@ Először hozzuk létre az `UgyfelKezeloForm`-ot, amely az ügyfelek listázás�
 
 Most adjuk hozzá a szükséges vezérlőelemeket az űrlaphoz:
 
-1. Húzz egy DataGridView vezérlőt az űrlapra, és nevezd el "dgvUgyfelek"-nek.
-2. Adj hozzá egy TextBox vezérlőt a szűréshez, és nevezd el "tbSzuro"-nak.
-3. Helyezz el három Button vezérlőt az űrlapon: "Új ügyfél", "Módosítás" és "Törlés" feliratokkal.
+1. Húzz egy `DataGridView` vezérlőt az űrlapra, és nevezd el "dgvUgyfelek"-nek.
+2. Adj hozzá egy `TextBox` vezérlőt a szűréshez, és nevezd el "tbSzuro"-nak.
+3. Helyezz el három `Button` vezérlőt az űrlapon: "Új ügyfél", "Módosítás" és "Törlés" feliratokkal.
 
 Az űrlap most nagyjából így kell kinézzen:
 
