@@ -37,3 +37,7 @@
 /projects/RendelesApp/.vs/RendelesApp/v17/DocumentLayout.backup.json
 /projects/RendelesApp/.vs/RendelesApp/v17/DocumentLayout.json
 *.vsidx
+projects/RendelesApp/RendelesApp/obj/project.assets.json
+projects/RendelesApp/RendelesApp/obj/project.nuget.cache
+projects/RendelesApp/RendelesApp/obj/RendelesApp.csproj.nuget.dgspec.json
+projects/RendelesApp/RendelesApp/obj/Debug/net8.0-windows/RendelesApp.csproj.AssemblyReference.cache
