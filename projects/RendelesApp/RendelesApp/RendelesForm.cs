@@ -34,7 +34,7 @@ namespace RendelesApp
 
         private Termek? _kivalasztottTermek => lbTermek.SelectedItem as Termek;
 
-        private decimal _afa = .27m;
+        private const decimal AFA = .27m;
 
         public RendelesForm()
         {
@@ -42,17 +42,25 @@ namespace RendelesApp
             _context = new RendelesDbContext();
         }
 
+        private void RendelesForm_Load(object sender, EventArgs e)
+        {
+            LoadData();
+
+            txtKedvezmeny.DataBindings.Add("Text", rendelesBindingSource, "Kedvezmeny", true, DataSourceUpdateMode.OnPropertyChanged);
+            Binding binding = txtKedvezmeny.DataBindings["Text"];
+            binding.FormattingEnabled = true;
+            binding.Format += Binding_Format;
+            binding.Parse += Binding_Parse;
+
+            binding.ReadValue();
+        }
+
         private void LoadData()
         {
             LoadUgyfelek();
             LoadTermekKategoriak();
             LoadCimek();
-        }
-
-        private void LoadTermekKategoriak()
-        {
-            var termekKategoriak = _context.TermekKategoria.ToList();
-            termekKategoriaTreeView1.LoadData(termekKategoriak);
+            LoadTermekek();
         }
 
         private void LoadUgyfelek()
@@ -68,6 +76,12 @@ namespace RendelesApp
             lbUgyfelek.DisplayMember = "Nev";
         }
 
+        private void LoadTermekKategoriak()
+        {
+            var termekKategoriak = _context.TermekKategoria.ToList();
+            termekKategoriaTreeView1.LoadData(termekKategoriak);
+        }
+
         private void LoadCimek()
         {
             var cimek = _context.Cim.ToList();
@@ -76,6 +90,11 @@ namespace RendelesApp
 
             cbCimek.ValueMember = "CimId";
             cbCimek.DisplayMember = "CimEgyben";
+        }
+
+        private void LoadTermekek()
+        {
+            allTermekBindingSource.DataSource = _context.Termek.ToList();
         }
 
         private void txtSzuro_TextChanged(object sender, EventArgs e)
@@ -92,11 +111,11 @@ namespace RendelesApp
         {
             if (_kivalasztottUgyfel == null) return;
 
-            var q = from x in _context.Rendeles
-                    where x.UgyfelId == _kivalasztottUgyfel.UgyfelId
-                    select x;
+            var rendeles = from x in _context.Rendeles
+                           where x.UgyfelId == _kivalasztottUgyfel.UgyfelId
+                           select x;
 
-            rendelesBindingSource.DataSource = q.ToList();
+            rendelesBindingSource.DataSource = rendeles.ToList();
 
             lbRendeles.ValueMember = "RendelesId";
             lbRendeles.DisplayMember = "RendelesDatum";
@@ -127,19 +146,6 @@ namespace RendelesApp
 
             lbTermek.DisplayMember = "Nev";
             lbTermek.ValueMember = "TermekId";
-        }
-
-        private void RendelesForm_Load(object sender, EventArgs e)
-        {
-            LoadData();
-
-            txtKedvezmeny.DataBindings.Add("Text", rendelesBindingSource, "Kedvezmeny", true, DataSourceUpdateMode.OnPropertyChanged);
-            Binding binding = txtKedvezmeny.DataBindings["Text"];
-            binding.FormattingEnabled = true;
-            binding.Format += Binding_Format;
-            binding.Parse += Binding_Parse;
-
-            binding.ReadValue();
         }
 
         private void Binding_Parse(object? sender, ConvertEventArgs e)
@@ -212,7 +218,7 @@ namespace RendelesApp
                 return;
             }
 
-            decimal bruttoAr = _kivalasztottTermek.AktualisAr * (1 + _afa);
+            decimal bruttoAr = _kivalasztottTermek.AktualisAr * (1 + AFA);
 
             var ujTetel = new RendelesTetel
             {
@@ -220,7 +226,7 @@ namespace RendelesApp
                 TermekId = _kivalasztottTermek.TermekId,
                 Mennyiseg = mennyiseg,
                 EgysegAr = _kivalasztottTermek.AktualisAr,
-                Afa = _afa,
+                Afa = AFA,
                 NettoAr = _kivalasztottTermek.AktualisAr * mennyiseg,
                 BruttoAr = bruttoAr
             };
