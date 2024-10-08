@@ -173,17 +173,17 @@ Most nézzünk egy példát a név mező validációjának implementálására:
     ```csharp
     private void tbNev_Validating(object sender, CancelEventArgs e)
     {
-    Regex rgxNev = new Regex(@"^[\p{L} .'-]+$");
+        Regex rgxNev = new Regex(@"^[\p{L} .'-]+$");
 
-    if (!rgxNev.IsMatch(tbNev.Text))
-    {
-        errorProvider1.SetError(tbNev, "A név csak kis- és nagybetűket jeleníthet meg.");
-        e.Cancel = true;
-    }
-    else
-    {
-        errorProvider1.SetError(tbNev, "");
-    }
+        if (!rgxNev.IsMatch(tbNev.Text))
+        {
+            errorProvider1.SetError(tbNev, "A név csak kis- és nagybetűket jeleníthet meg.");
+            e.Cancel = true;
+        }
+        else
+        {
+            errorProvider1.SetError(tbNev, "");
+        }
     }
     ```
 
