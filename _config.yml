@@ -1,10 +1,12 @@
 # Conversion
-markdown: kramdown
+markdown: GFM
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
+# Optional: Specify the Rouge theme
+rouge:
+  theme: github
 # Markdown Processing
 kramdown:
   input: GFM
