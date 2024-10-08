@@ -1,5 +1,3 @@
-Rendben, megértettem. Íme az átdolgozott fejezet az ügyféladatok kezeléséről és validálásáról:
-
 # Adatok validálása (Ügyfelek adatainak kezelése)
 
 Ebben a fejezetben lépésről lépésre végigmegyünk azon, hogyan hozhatunk létre egy olyan felhasználói felületet, amely lehetővé teszi az ügyféladatok kezelését és validálását. A folyamat során megismerkedsz az adatkötés (data binding) alapjaival, a CRUD (Create, Read, Update, Delete) műveletek implementálásával, valamint az adatok validálásának módszereivel Windows Forms környezetben.
@@ -146,8 +144,6 @@ Ezzel megjelennek az ügyfelek adatai a táblázatban.
     c) Közvetlen adatkötés: Az `ugyfelBindingSource.DataSource = SzerkesztettÜgyfél;` sor közvetlenül összeköti az űrlap vezérlőit az `Ugyfel` objektum tulajdonságaival. Ez automatikusan szinkronizálja a felhasználói felületet az adatokkal, mindkét irányban.
 
     d) Kód újrafelhasználhatóság: Ez a megközelítés lehetővé teszi, hogy ugyanazt az űrlapot és kódot használjuk mind az "Új ügyfél", mind az "Ügyfél szerkesztése" funkcióhoz, ami csökkenti a kód duplikációját és javítja a karbantarthatóságot.
-
-Rendben, itt van az átdolgozott adatvalidációs rész egyben:
 
 ## 6. Adatok validálása
 
