@@ -37,7 +37,9 @@ A szerzők
 3. [PART 1: CRUD műveletek és DataBinding TreeView segítségével (Termékkategóriák adatainak kezelése)](./ch02-winforms/ch02-03-product-category-treeview-part01.md)
 3. [PART 2: CRUD műveletek és DataBinding TreeView segítségével (Termékkategóriák adatainak kezelése)](./ch02-winforms/ch02-03-product-category-treeview-part02.md)
 4. [PART 3: Termékkategóriák adatainak XML dokumnetumba mentése](./ch02-winforms/ch02-03-product-category-xml.md)
-5. [Adatok validálása (Ügyfelek adatainak kezelése)](./ch02-winforms/ch02-04-user-management.md)
-6. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
-7. Adatok exportálása Excelbe
+5. [RegEx összefoglaló](./ch02-winforms/ch02-04-01-regex.md)
+6. [Validáció elmélet](./ch02-winforms/ch02-04-02-validation.md)
+7. [Adatok validálása (Ügyfelek adatainak kezelése)](./ch02-winforms/ch02-04-user-management.md)
+8. Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)
+9. Adatok exportálása Excelbe
 
