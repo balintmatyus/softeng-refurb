@@ -1,5 +1,5 @@
 remote_theme: zendesk/jekyll-theme-zendesk-garden@main
-markdown: kramdown
+markdown: GFM
 kramdown:
   syntax_highlighter: rouge
 highlighter: rouge
