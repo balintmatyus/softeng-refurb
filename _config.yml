@@ -1,22 +1,38 @@
-# Conversion
+# _config.yml
+
+# Enable GitHub Flavored Markdown (GFM)
 markdown: GFM
+
+# Enable syntax highlighting
 highlighter: rouge
+
+# Optional: Use the GitHub theme for syntax highlighting
 rouge:
   theme: github
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
 
-# Markdown Processing
-kramdown:
-  input: GFM
-  hard_wrap: false
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
+# URL and baseurl for your GitHub Pages site (replace with your own values)
+url: "https://your-username.github.io"
+baseurl: "/your-repository"
+
+# Other settings
+title: Your Jekyll Site
+description: A description of your site.
+author: Your Name
+permalink: pretty
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude unnecessary files from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+
+# Build settings
+markdown_ext: markdown,mkdown,mkdn,mkd,md
+
+# If you're using custom assets like CSS or JavaScript
+sass:
+  style: compressed
