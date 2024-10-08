@@ -10,9 +10,6 @@ highlighter: rouge
 rouge:
   theme: github
 
-# URL and baseurl for your GitHub Pages site (replace with your own values)
-url: "https://your-username.github.io"
-baseurl: "/your-repository"
 
 # Other settings
 title: Your Jekyll Site
