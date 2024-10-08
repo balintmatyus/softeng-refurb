@@ -50,7 +50,7 @@ Természetesen kombinálhatók is. A  **^p.k$**  kifejezés csak akkor igaz, ha 
 
 ## Mintaprogram reguláris kifejezések kipróbálására
 
-![1615368531680.png](1615368531680.png)
+![1615368531680.png](./04-img/1615368531680.png)
 
 ``` csharp
 public partial class Form1 : Form
