@@ -69,17 +69,18 @@ Ezzel megjelennek az ügyfelek adatai a táblázatban.
 8. Új ügyfél hozzáadása:
    - Hozz létre egy új űrlapot `UgyfelSzerkesztesForm` néven az új ügyfelek adatainak bekérésére.
    - Implementáld az "Új ügyfél" gomb Click eseménykezelőjét:
-     ```csharp
-     private void buttonUjUgyfel_Click(object sender, EventArgs e)
-     {
-         UgyfelSzerkesztesForm ujUgyfelForm = new UgyfelSzerkesztesForm();
-         if (ujUgyfelForm.ShowDialog() == DialogResult.OK)
-         {
-             ugyfelBindingList.Add(ujUgyfelForm.SzerkesztettÜgyfél);
-             Mentés();
-         }
-     }
-     ```
+    
+    ```csharp
+    private void buttonUjUgyfel_Click(object sender, EventArgs e)
+    {
+        UgyfelSzerkesztesForm ujUgyfelForm = new UgyfelSzerkesztesForm();
+        if (ujUgyfelForm.ShowDialog() == DialogResult.OK)
+        {
+            ugyfelBindingList.Add(ujUgyfelForm.SzerkesztettÜgyfél);
+            Mentés();
+        }
+    }
+    ```
 
 9. Hozz létre egy `Mentés()` metódust a változások adatbázisba írásához:
    ```csharp
