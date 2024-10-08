@@ -16,19 +16,29 @@ using System.Windows.Forms;
 
 namespace RendelesApp
 {
-    public partial class UgyfelSzerkesztesForm : Form
+    
+    public partial class UgyfelSzerkesztesForm : Form       
     {
-        private RendelesDbContext _context;
-        private readonly Ugyfel? _ugyfel;
 
-        private bool ujUgyfel { get { return _ugyfel == null; } }
+        public readonly Ugyfel? SzerkesztettÜgyfél;
+
+        private bool ujUgyfel { get { return SzerkesztettÜgyfél == null; } }
 
 
-        public UgyfelSzerkesztesForm(Ugyfel? ugyfel = null)
+        //Új ügyfél hozzáadása
+        public UgyfelSzerkesztesForm()
         {
             InitializeComponent();
-            this._context = new RendelesDbContext();
-            this._ugyfel = ugyfel;
+            this.SzerkesztettÜgyfél = new Ugyfel();            
+            ugyfelBindingSource.DataSource = SzerkesztettÜgyfél;            
+        }
+
+        //Ügyfél szerkesztése
+        public UgyfelSzerkesztesForm(Ugyfel ugyfel)
+        {
+            InitializeComponent();            
+            this.SzerkesztettÜgyfél = ugyfel;
+            ugyfelBindingSource.DataSource = SzerkesztettÜgyfél;
         }
 
         private void rbLetezoCim_CheckedChanged(object sender, EventArgs e)
@@ -55,99 +65,106 @@ namespace RendelesApp
 
         private void UgyfelSzerkesztesForm_Load(object sender, EventArgs e)
         {
-            cbCimek.DataSource = (from x in _context.Cim
-                                  orderby x.Varos
-                                  select new
-                                  {
-                                      CimId = x.CimId,
-                                      CimEgyben = $"{x.Iranyitoszam}-{x.Varos}, {x.Orszag}: {x.Utca} {x.Hazszam}"
-                                  }).ToList();
+            //cbCimek.DataSource = (from x in _context.Cim
+            //                      orderby x.Varos
+            //                      select new
+            //                      {
+            //                          CimId = x.CimId,
+            //                          CimEgyben = $"{x.Iranyitoszam}-{x.Varos}, {x.Orszag}: {x.Utca} {x.Hazszam}"
+            //                      }).ToList();
 
-            cbCimek.DisplayMember = "CimEgyben";
-            cbCimek.ValueMember = "CimId";
+            //cbCimek.DisplayMember = "CimEgyben";
+            //cbCimek.ValueMember = "CimId";
 
-            if (_ugyfel != null)
-            {
-                tbNev.Text = _ugyfel.Nev;
-                tbEmail.Text = _ugyfel.Email;
-                tbTelefonszam.Text = _ugyfel.Telefonszam;
-                cbCimek.SelectedValue = _ugyfel.LakcimId ?? _context.Cim.FirstOrDefault().CimId;
-                btnMentes.Text = "Mentés";
-            }
+            //if (SzerkesztettÜgyfél != null)
+            //{
+            //    tbNev.Text = SzerkesztettÜgyfél.Nev;
+            //    tbEmail.Text = SzerkesztettÜgyfél.Email;
+            //    tbTelefonszam.Text = SzerkesztettÜgyfél.Telefonszam;
+            //    cbCimek.SelectedValue = SzerkesztettÜgyfél.LakcimId ?? _context.Cim.FirstOrDefault().CimId;
+            //    btnMentes.Text = "Mentés";
+            //}
         }
 
         private void btnMentes_Click(object sender, EventArgs e)
         {
+            //A gomb Dialog Result-jána itt (none), különben nem mindig bezár
             if (!this.ValidateChildren()) return;
+            ugyfelBindingSource.EndEdit();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
 
-            Cim? cim;
 
-            if (rbUjCim.Checked)
-            {
-                // ha új cím, akkor először hozzáadjuk a címet az adatbázishoz
-                cim = new Cim()
-                {
-                    Orszag = tbOrszag.Text,
-                    Iranyitoszam = tbIranyitoszam.Text,
-                    Varos = tbVaros.Text,
-                    Utca = tbUtca.Text,
-                    Hazszam = tbHazszam.Text
-                };
 
-                _context.Cim.Add(cim);
 
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
-            }
-            else
-            {
-                int kivalasztottCimId = (int)cbCimek.SelectedValue!;
-                cim = _context.Cim.Where(x => x.CimId == kivalasztottCimId).First();
-            }
+            //Cim? cim;
 
-            if (cim != null)
-            {
-                if (ujUgyfel)
-                {
-                    Ugyfel ugyfel = new Ugyfel()
-                    {
-                        Nev = tbNev.Text,
-                        Telefonszam = tbTelefonszam.Text,
-                        Email = tbEmail.Text,
-                        LakcimId = cim.CimId
-                    };
+            //if (rbUjCim.Checked)
+            //{
+            //    // ha új cím, akkor először hozzáadjuk a címet az adatbázishoz
+            //    cim = new Cim()
+            //    {
+            //        Orszag = tbOrszag.Text,
+            //        Iranyitoszam = tbIranyitoszam.Text,
+            //        Varos = tbVaros.Text,
+            //        Utca = tbUtca.Text,
+            //        Hazszam = tbHazszam.Text
+            //    };
 
-                    _context.Ugyfel.Add(ugyfel);
-                }
+            //    _context.Cim.Add(cim);
 
-                else
-                {
-                    _ugyfel.Nev = tbNev.Text;
-                    _ugyfel.Email = tbEmail.Text;
-                    _ugyfel.Telefonszam = tbTelefonszam.Text;
-                    _ugyfel.LakcimId = cim.CimId;
-                    _context.Ugyfel.Update(_ugyfel);
-                }
+            //    try
+            //    {
+            //        _context.SaveChanges();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //        return;
+            //    }
+            //}
+            //else
+            //{
+            //    int kivalasztottCimId = (int)cbCimek.SelectedValue!;
+            //    cim = _context.Cim.Where(x => x.CimId == kivalasztottCimId).First();
+            //}
 
-                try
-                {
-                    _context.SaveChanges();
-                    MessageBox.Show("Sikeres mentés!");
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
-            }
+            //if (cim != null)
+            //{
+            //    if (ujUgyfel)
+            //    {
+            //        Ugyfel ugyfel = new Ugyfel()
+            //        {
+            //            Nev = tbNev.Text,
+            //            Telefonszam = tbTelefonszam.Text,
+            //            Email = tbEmail.Text,
+            //            LakcimId = cim.CimId
+            //        };
+
+            //        _context.Ugyfel.Add(ugyfel);
+            //    }
+
+            //    else
+            //    {
+            //        SzerkesztettÜgyfél.Nev = tbNev.Text;
+            //        SzerkesztettÜgyfél.Email = tbEmail.Text;
+            //        SzerkesztettÜgyfél.Telefonszam = tbTelefonszam.Text;
+            //        SzerkesztettÜgyfél.LakcimId = cim.CimId;
+            //        _context.Ugyfel.Update(SzerkesztettÜgyfél);
+            //    }
+
+            //    try
+            //    {
+            //        _context.SaveChanges();
+            //        MessageBox.Show("Sikeres mentés!");
+            //        this.Close();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //        return;
+            //    }
+            //}
         }
 
         private void tbNev_Validating(object sender, CancelEventArgs e)

@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             lblNev = new Label();
             tbNev = new TextBox();
+            ugyfelBindingSource = new BindingSource(components);
             lblEmail = new Label();
             tbEmail = new TextBox();
             lblTelefonszam = new Label();
@@ -51,7 +52,10 @@
             btnMentes = new Button();
             btnMegse = new Button();
             errorProvider1 = new ErrorProvider(components);
+            cimBindingSource = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)ugyfelBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cimBindingSource).BeginInit();
             SuspendLayout();
             // 
             // lblNev
@@ -66,11 +70,17 @@
             // 
             // tbNev
             // 
+            tbNev.CausesValidation = false;
+            tbNev.DataBindings.Add(new Binding("Text", ugyfelBindingSource, "Nev", true));
             tbNev.Location = new Point(102, 21);
             tbNev.Name = "tbNev";
             tbNev.Size = new Size(293, 23);
             tbNev.TabIndex = 1;
             tbNev.Validating += tbNev_Validating;
+            // 
+            // ugyfelBindingSource
+            // 
+            ugyfelBindingSource.DataSource = typeof(Models.Ugyfel);
             // 
             // lblEmail
             // 
@@ -84,6 +94,8 @@
             // 
             // tbEmail
             // 
+            tbEmail.CausesValidation = false;
+            tbEmail.DataBindings.Add(new Binding("Text", ugyfelBindingSource, "Email", true));
             tbEmail.Location = new Point(102, 50);
             tbEmail.Name = "tbEmail";
             tbEmail.Size = new Size(293, 23);
@@ -102,6 +114,8 @@
             // 
             // tbTelefonszam
             // 
+            tbTelefonszam.CausesValidation = false;
+            tbTelefonszam.DataBindings.Add(new Binding("Text", ugyfelBindingSource, "Telefonszam", true));
             tbTelefonszam.Location = new Point(102, 79);
             tbTelefonszam.Name = "tbTelefonszam";
             tbTelefonszam.Size = new Size(293, 23);
@@ -137,11 +151,15 @@
             // cbCimek
             // 
             cbCimek.CausesValidation = false;
+            cbCimek.DataBindings.Add(new Binding("SelectedValue", ugyfelBindingSource, "LakcimId", true));
+            cbCimek.DataSource = cimBindingSource;
+            cbCimek.DisplayMember = "CimEgyben";
             cbCimek.FormattingEnabled = true;
             cbCimek.Location = new Point(12, 145);
             cbCimek.Name = "cbCimek";
             cbCimek.Size = new Size(383, 23);
             cbCimek.TabIndex = 3;
+            cbCimek.ValueMember = "CimId";
             // 
             // label4
             // 
@@ -246,7 +264,7 @@
             btnMentes.Name = "btnMentes";
             btnMentes.Size = new Size(383, 23);
             btnMentes.TabIndex = 7;
-            btnMentes.Text = "Új elem hozzáadása";
+            btnMentes.Text = "Ok";
             btnMentes.UseVisualStyleBackColor = true;
             btnMentes.Click += btnMentes_Click;
             // 
@@ -264,6 +282,10 @@
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
+            // 
+            // cimBindingSource
+            // 
+            cimBindingSource.DataSource = typeof(Models.Cim);
             // 
             // UgyfelSzerkesztesForm
             // 
@@ -297,7 +319,9 @@
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "UjUgyfelForm";
             Load += UgyfelSzerkesztesForm_Load;
+            ((System.ComponentModel.ISupportInitialize)ugyfelBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cimBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -326,5 +350,7 @@
         private Button btnMentes;
         private Button btnMegse;
         private ErrorProvider errorProvider1;
+        private BindingSource ugyfelBindingSource;
+        private BindingSource cimBindingSource;
     }
 }

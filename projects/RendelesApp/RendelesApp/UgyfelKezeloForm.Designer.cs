@@ -54,7 +54,7 @@ namespace RendelesApp
             button1.TabIndex = 1;
             button1.Text = "Új ügyfél hozzáadása";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += buttonUjUgyfel_Click;
             // 
             // textBox1
             // 

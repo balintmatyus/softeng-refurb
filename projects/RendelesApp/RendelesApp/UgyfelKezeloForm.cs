@@ -28,56 +28,78 @@ namespace RendelesApp
         private void UgyfelKezeloForm_Load(object sender, EventArgs e)
         {
             ugyfelBindingList = _context.Ugyfel.Local.ToBindingList();
+            //BindingList-et használtunk az ea-n is, csak üreset hoztunk létre
             ugyfelBindingSource.DataSource = ugyfelBindingList;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void Mentés()
+        {
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonUjUgyfel_Click(object sender, EventArgs e)
         {
             UgyfelSzerkesztesForm ujUgyfelForm = new UgyfelSzerkesztesForm();
-            if (ujUgyfelForm.ShowDialog() == DialogResult.OK) {
-                _context.Ugyfel.Load();
+            if (ujUgyfelForm.ShowDialog() == DialogResult.OK)
+            {
+                ugyfelBindingList.Add(ujUgyfelForm.SzerkesztettÜgyfél);
+                Mentés(); //Rögtön megkapja a DGV-ben az ID-t, nem kell refresh                
             };
 
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string filterString = textBox1.Text.ToLower();
+            ugyfelBindingSource.Filter = $"Name LIKE '%{textBox1.Text}%'";
 
-            ugyfelBindingSource.DataSource = from u in ugyfelBindingList
-                                             where u.Nev.ToLower().Contains(filterString) ||
-                                             u.Email.ToLower().Contains(filterString) ||
-                                             (u.Telefonszam != null && u.Telefonszam.Contains(filterString))
-                                             orderby u.UgyfelId
-                                             select u;
+            //Ez is jópofa, maradhat a doksiban :) 
+
+            //string filterString = textBox1.Text.ToLower();                      
+            //ugyfelBindingSource.DataSource = from u in ugyfelBindingList
+            //                                 where u.Nev.ToLower().Contains(filterString) ||
+            //                                 u.Email.ToLower().Contains(filterString) ||
+            //                                 (u.Telefonszam != null && u.Telefonszam.Contains(filterString))
+            //                                 orderby u.UgyfelId
+            //                                 select u;
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].DataBoundItem is Ugyfel ugyfel)
+            //if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].DataBoundItem is Ugyfel ugyfel)
+            
+            if (ugyfelBindingSource.Current == null) return;
+
+            UgyfelSzerkesztesForm szerkesztesForm = new UgyfelSzerkesztesForm(ugyfelBindingSource.Current as Ugyfel);
+            //Rögtön frissül a DGV-ban is, nem kell reolad, refresh, egyéb. 
+            //Az EndEdit() triggereli a BindingSource-ot és a DataGridView-t, hogy frissítse magát
+
+            if (szerkesztesForm.ShowDialog() == DialogResult.OK)
             {
-                UgyfelSzerkesztesForm szerkesztesForm = new UgyfelSzerkesztesForm(ugyfel);
-                if (szerkesztesForm.ShowDialog() == DialogResult.OK)
-                {
-                    dataGridView1.Refresh();
-                }
+                Mentés();
             }
+            else
+            {
+                _context.Ugyfel.Load();
+                //Ha mégse mentjük el, akkor visszaállítjuk az eredeti értékeket
+                //Az adatkötés megoldja a többit
+            }
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows[0].DataBoundItem is Ugyfel ugyfel)
-            {
-                _context.Ugyfel.Remove(ugyfel);
-                try
-                {
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            //Megerősítő üzi lehet :)
+            if (ugyfelBindingSource.Current == null) return;
+            ugyfelBindingSource.RemoveCurrent();
+            Mentés();
+
         }
     }
 }
