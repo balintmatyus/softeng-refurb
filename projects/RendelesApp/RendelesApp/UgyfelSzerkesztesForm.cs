@@ -169,7 +169,7 @@ namespace RendelesApp
 
         private void tbNev_Validating(object sender, CancelEventArgs e)
         {
-            Regex rgxNev = new Regex(@"^[a-zA-Z\s]+$");
+            Regex rgxNev = new Regex(@"^[\p{L} .'-]+$");
 
             if (!rgxNev.IsMatch(tbNev.Text))
             {

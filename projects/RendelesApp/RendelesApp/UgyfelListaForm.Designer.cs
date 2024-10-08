@@ -2,7 +2,7 @@
 
 namespace RendelesApp
 {
-    partial class UgyfelKezeloForm
+    partial class UgyfelListaForm
     {
         /// <summary>
         /// Required designer variable.

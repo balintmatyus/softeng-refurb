@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace RendelesApp
 {
-    public partial class UgyfelKezeloForm : Form
+    public partial class UgyfelListaForm : Form
     {
         private RendelesDbContext _context;
         private BindingList<Ugyfel>? ugyfelBindingList;
 
-        public UgyfelKezeloForm()
+        public UgyfelListaForm()
         {
             InitializeComponent();
             _context = new RendelesDbContext();
@@ -28,7 +28,6 @@ namespace RendelesApp
         private void UgyfelKezeloForm_Load(object sender, EventArgs e)
         {
             ugyfelBindingList = _context.Ugyfel.Local.ToBindingList();
-            //BindingList-et használtunk az ea-n is, csak üreset hoztunk létre
             ugyfelBindingSource.DataSource = ugyfelBindingList;
         }
 
@@ -57,7 +56,7 @@ namespace RendelesApp
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            ugyfelBindingSource.Filter = $"Name LIKE '%{textBox1.Text}%'";
+            ugyfelBindingSource.Filter = $"Nev LIKE '%{textBox1.Text}%'";
 
             //Ez is jópofa, maradhat a doksiban :) 
 
