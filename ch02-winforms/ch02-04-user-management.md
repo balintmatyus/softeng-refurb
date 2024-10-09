@@ -2,7 +2,7 @@
 
 Ebben a fejezetben lépésről lépésre végigmegyünk azon, hogyan hozhatunk létre egy olyan felhasználói felületet, amely lehetővé teszi az ügyféladatok kezelését és validálását. A folyamat során megismerkedsz az adatkötés (data binding) alapjaival, a CRUD (Create, Read, Update, Delete) műveletek implementálásával, valamint az adatok validálásának módszereivel Windows Forms környezetben.
 
-## 1. Az ügyfélkezelő űrlap létrehozása
+## 1. Az ügyféllistázó űrlap létrehozása
 
 ❶ Hozz létre egy új Windows Forms űrlapot `UgyfelListaForm` néven.
 
@@ -39,7 +39,7 @@ public UgyfelListaForm()
 
 ❹ Állítsd be az adatkötést a kódban:
 ```csharp
-private void UgyfelKezeloForm_Load(object sender, EventArgs e)
+private void UgyfelListaForm_Load(object sender, EventArgs e)
 {
     _context.Ugyfel.Load();
     ugyfelBindingList = _context.Ugyfel.Local.ToBindingList();
@@ -163,6 +163,8 @@ Ezután készen állunk az új űrlap megnyitására szerkesztésre illetve új 
 ## 5. CRUD műveletek implementálása
 
 #### 5.1 Új ügyfél hozzáadása
+
+Térjünk vissza az `UgyfelListaForm`-hoz!
 
 ❶ Implementáld az "Új ügyfél" gomb Click eseménykezelőjét:
 
