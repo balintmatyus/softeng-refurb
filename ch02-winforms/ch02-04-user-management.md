@@ -78,7 +78,7 @@ ugyfelBindingSource.DataSource = from u in ugyfelBindingList
 
 #### 4.1 A űrlap felépítése
 
-Hozz létre egy `UgyfelSzerkesztesForm ne vű űrlaopt, és helyezd el a következő vezérlőket:
+Hozz létre egy `UgyfelSzerkesztesForm nevű űrlapot, és helyezd el a következő vezérlőket:
 
 - `TextBox`-ok a név, email és telefonszám megadásához
 - `ComboBox` a meglévő címek kiválasztásához
@@ -116,11 +116,13 @@ Ez a konstruktor és az adatkötés beállítása több szempontból is előnyö
 
 Kérj segítséget a gyakvezértől :)
 
-#### 4.4 OK és Mégese gombok 
 
-❶ A __Mégse__ gomb `DialogResult` tulajdonsága legyen `Cancel`, beállíthatod a _Propoerties_ ablakban.
 
-❷ Az __Ok__ gombot egy kicsit trükkősebben oldjuk meg, ennek később lesz jelentősége, amikor hibás adatkitöltés esetén nem engedjük bezárni az ablakot:
+#### 4.4 OK és Mégse gombok 
+
+❶ A __Mégse__ gomb `DialogResult` tulajdonsága legyen `Cancel`, beállíthatod a _Properties_ ablakban.
+
+❷ Az __Ok__ gombot egy kicsit trükkösebben oldjuk meg, ennek később lesz jelentősége, amikor hibás adatkitöltés esetén nem engedjük bezárni az ablakot:
 
 ```csharp
 private void btnMentes_Click(object sender, EventArgs e)
