@@ -178,5 +178,17 @@ blockquote p:first-of-type:contains("[!WARNING]") {
       });
     </script>
      -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('blockquote p').forEach(function(p) {
+    if (p.textContent.startsWith('[!WARNING]')) {
+      p.parentElement.classList.add('warning'); // Add warning class to the blockquote
+      p.innerHTML = p.innerHTML.replace('[!WARNING]', '⚠️ WARNING:'); // Replace the text
+    }
+  });
+});
+</script>
+    
   </body>
 </html>
