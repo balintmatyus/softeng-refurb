@@ -88,6 +88,29 @@ Hozz létre egy `UgyfelSzerkesztesForm nevű űrlapot, és helyezd el a követke
 ![kép](./04-img/image-3.png)
 
 #### 4.2 Implementáld az adatkötést az `UgyfelSzerkesztesForm`-on:
+```csharp
+public Ugyfel SzerkesztettÜgyfél {get;set;}
+
+public UgyfelSzerkesztesForm(Ugyfel ugyfel)
+{
+    InitializeComponent();
+    this.SzerkesztettÜgyfél = ugyfel;
+    ugyfelBindingSource.DataSource = SzerkesztettÜgyfél;
+}
+
+public UgyfelSzerkesztesForm()
+{
+    InitializeComponent();
+    this.SzerkesztettÜgyfél = new Ugyfel();
+    ugyfelBindingSource.DataSource = SzerkesztettÜgyfél;
+}
+```
+
+A konstruktornak két _túlterkelése_ (overload) van. A paraméter nélkülit majd akkur hívjuk, ha új ügyvelet szeretnénk létrehozni. Ha már meglévő ügyfelet akarunk szerkeszteni, paraméterként átadjuk a szerkesztendő ügyfélre mutató referenciát. 
+
+#### 4.2b Alternatív megoldás az előző pontra
+
+Feketeöveseknek :)
 
 ```csharp
 public Ugyfel SzerkesztettÜgyfél {get;set;}
