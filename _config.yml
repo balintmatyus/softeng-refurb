@@ -1,5 +1,5 @@
 # Conversion
-markdown: GFM
+markdown: kramdown
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
