@@ -1,3 +1,7 @@
+---
+id: xml
+---
+
 # Kategóriák mentése XML dokumentumba
 
 ## XML építése C#-ban
