@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/projects/RendelesApp/RendelesApp/bin
-/projects/RendelesApp/RendelesApp/obj
-/projects/RendelesApp/.vs
+bin/
+obj/
+.vs/
 *.vsidx
