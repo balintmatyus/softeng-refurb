@@ -6,3 +6,9 @@ bin/
 obj/
 .vs/
 *.vsidx
+/projects/RendelesApp/RendelesApp/obj/Debug/net8.0-windows/RendelesApp.csproj.AssemblyReference.cache
+/projects/RendelesApp/RendelesApp/obj/Debug/net8.0-windows/RendelesApp.designer.runtimeconfig.json
+/projects/RendelesApp/RendelesApp/obj/project.assets.json
+/projects/RendelesApp/RendelesApp/obj/project.nuget.cache
+/projects/RendelesApp/RendelesApp/obj/RendelesApp.csproj.nuget.dgspec.json
+/projects/RendelesApp/RendelesApp/obj/RendelesApp.csproj.nuget.g.props
