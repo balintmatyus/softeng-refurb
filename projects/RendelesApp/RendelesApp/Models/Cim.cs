@@ -34,11 +34,5 @@ public partial class Cim
     [InverseProperty("Lakcim")]
     public virtual ICollection<Ugyfel> Ugyfel { get; set; } = new List<Ugyfel>();
 
-    public string CimEgyben
-    {
-        get
-        {
-            return $"{Iranyitoszam}-{Varos}, {Orszag}: {Utca} {Hazszam}";
-        }
-    }
+    public string CimEgyben => $"{Iranyitoszam}-{Varos}, {Orszag}: {Utca} {Hazszam}";
 }

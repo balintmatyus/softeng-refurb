@@ -2,6 +2,8 @@
 using RendelesApp.Data;
 using RendelesApp.Models;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
 using System.Drawing;
 using System.Linq;
@@ -11,30 +13,13 @@ namespace RendelesApp
 {
     public partial class RendelesForm : Form
     {
-        private RendelesDbContext _context;
-
-        private Ugyfel? _kivalasztottUgyfel => lbUgyfelek.SelectedItem as Ugyfel;
-
-        private TermekKategoria? _kivalasztottTermekKategoria => termekKategoriaTreeView1.KivalasztottKategoria;
-
-        private Cim? _kivalasztottCim
-        {
-            get
-            {
-                if (cbCimek.SelectedValue != null)
-                {
-                    int selectedCimId = (int)cbCimek.SelectedValue;
-                    return _context.Cim.FirstOrDefault(x => x.CimId == selectedCimId);
-                }
-                return null;
-            }
-        }
-
-        private Rendeles? _kivalasztottRendeles => lbRendeles.SelectedItem as Rendeles;
-
-        private Termek? _kivalasztottTermek => lbTermek.SelectedItem as Termek;
-
+        private readonly RendelesDbContext _context;
         private const decimal AFA = .27m;
+
+        private Ugyfel? KivalasztottUgyfel => lbUgyfelek.SelectedItem as Ugyfel;
+        private Cim? KivalasztottCim => cbCimek.SelectedItem as Cim;
+        private Rendeles? KivalasztottRendeles => lbRendeles.SelectedItem as Rendeles;
+        private Termek? KivalasztottTermek => lbTermek.SelectedItem as Termek;
 
         public RendelesForm()
         {
@@ -45,9 +30,12 @@ namespace RendelesApp
         private void RendelesForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            SetupDataBindings();
+        }
 
-            txtKedvezmeny.DataBindings.Add("Text", rendelesBindingSource, "Kedvezmeny", true, DataSourceUpdateMode.OnPropertyChanged);
-            Binding binding = txtKedvezmeny.DataBindings["Text"];
+        private void SetupDataBindings()
+        {
+            Binding binding = txtKedvezmeny.DataBindings.Add("Text", rendelesBindingSource, "Kedvezmeny", true, DataSourceUpdateMode.OnPropertyChanged);
             binding.FormattingEnabled = true;
             binding.Format += Binding_Format;
             binding.Parse += Binding_Parse;
@@ -58,9 +46,8 @@ namespace RendelesApp
         private void LoadData()
         {
             LoadUgyfelek();
-            LoadTermekKategoriak();
-            LoadCimek();
-            LoadTermekek();
+            cimBindingSource.DataSource = _context.Cim.ToList();
+            termekBindingSource.DataSource = _context.Termek.ToList();
         }
 
         private void LoadUgyfelek()
@@ -72,29 +59,28 @@ namespace RendelesApp
 
             ugyfelBindingSource.DataSource = q.ToList();
 
-            lbUgyfelek.ValueMember = "UgyfelId";
-            lbUgyfelek.DisplayMember = "Nev";
+            ugyfelBindingSource.ResetCurrentItem();
         }
 
-        private void LoadTermekKategoriak()
+        private void LoadRendelesek()
         {
-            var termekKategoriak = _context.TermekKategoria.ToList();
-            termekKategoriaTreeView1.LoadData(termekKategoriak);
-        }
+            if (KivalasztottUgyfel == null) return;
 
-        private void LoadCimek()
-        {
-            var cimek = _context.Cim.ToList();
+            dgvTetelek.DataSource = null;
 
-            cimBindingSource.DataSource = cimek;
+            var rendeles = from x in _context.Rendeles
+                           where x.UgyfelId == KivalasztottUgyfel.UgyfelId
+                           select x;
 
-            cbCimek.ValueMember = "CimId";
-            cbCimek.DisplayMember = "CimEgyben";
-        }
+            rendelesBindingSource.DataSource = rendeles.ToList();
+            lbRendeles.DataSource = rendelesBindingSource;
 
-        private void LoadTermekek()
-        {
-            allTermekBindingSource.DataSource = _context.Termek.ToList();
+            if (lbRendeles.Items.Count > 0)
+            {
+                lbRendeles.SelectedIndex = 0;
+            }
+
+            rendelesBindingSource.ResetCurrentItem();
         }
 
         private void txtSzuro_TextChanged(object sender, EventArgs e)
@@ -105,47 +91,6 @@ namespace RendelesApp
         private void lbUgyfelek_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadRendelesek();
-        }
-
-        private void LoadRendelesek()
-        {
-            if (_kivalasztottUgyfel == null) return;
-
-            var rendeles = from x in _context.Rendeles
-                           where x.UgyfelId == _kivalasztottUgyfel.UgyfelId
-                           select x;
-
-            rendelesBindingSource.DataSource = rendeles.ToList();
-
-            lbRendeles.ValueMember = "RendelesId";
-            lbRendeles.DisplayMember = "RendelesDatum";
-
-            if (lbRendeles.Items.Count > 0)
-            {
-                lbRendeles.SelectedIndex = 0;
-            }
-
-            dgvTetelek.DataSource = null;
-        }
-
-        private void termekKategoriaTreeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            if (_kivalasztottTermekKategoria == null) return;
-
-            var kivalasztottKategoriak = termekKategoriaTreeView1
-                .KivalasztottKategoriak(_kivalasztottTermekKategoria)
-                .Select(k => k.KategoriaId)
-                .ToList();
-
-            var q = from x in _context.Termek
-                    where x.KategoriaId != null && kivalasztottKategoriak.Contains((int)x.KategoriaId)
-                    orderby x.Nev
-                    select x;
-
-            termekBindingSource.DataSource = q.ToList();
-
-            lbTermek.DisplayMember = "Nev";
-            lbTermek.ValueMember = "TermekId";
         }
 
         private void Binding_Parse(object? sender, ConvertEventArgs e)
@@ -171,12 +116,12 @@ namespace RendelesApp
 
         private void btnUjRendeles_Click(object sender, EventArgs e)
         {
-            if (_kivalasztottUgyfel == null)
+            if (KivalasztottUgyfel == null)
             {
                 return;
             }
 
-            var cim = _kivalasztottUgyfel.Lakcim ?? _context.Cim.FirstOrDefault();
+            var cim = KivalasztottUgyfel.Lakcim ?? _context.Cim.FirstOrDefault();
 
             if (cim == null)
             {
@@ -186,7 +131,7 @@ namespace RendelesApp
 
             var ujRendeles = new Rendeles()
             {
-                UgyfelId = _kivalasztottUgyfel.UgyfelId,
+                UgyfelId = KivalasztottUgyfel.UgyfelId,
                 SzallitasiCimId = cim.CimId,
                 RendelesDatum = DateTime.Now,
                 Kedvezmeny = 0,
@@ -195,7 +140,7 @@ namespace RendelesApp
             };
 
             _context.Rendeles.Add(ujRendeles);
-            _context.SaveChanges();
+            Mentés();
 
             lblRendelesLabel.Text = $"A rendelés teljes értéke: {ujRendeles.Vegosszeg} Ft";
 
@@ -212,27 +157,27 @@ namespace RendelesApp
                 return;
             }
 
-            if (_kivalasztottRendeles == null || _kivalasztottTermek == null)
+            if (KivalasztottRendeles == null || KivalasztottTermek == null)
             {
                 MessageBox.Show("Nincs kiválasztva rendelés vagy termék!");
                 return;
             }
 
-            decimal bruttoAr = _kivalasztottTermek.AktualisAr * (1 + AFA);
+            decimal bruttoAr = KivalasztottTermek.AktualisAr * (1 + AFA);
 
             var ujTetel = new RendelesTetel
             {
-                RendelesId = _kivalasztottRendeles.RendelesId,
-                TermekId = _kivalasztottTermek.TermekId,
+                RendelesId = KivalasztottRendeles.RendelesId,
+                TermekId = KivalasztottTermek.TermekId,
                 Mennyiseg = mennyiseg,
-                EgysegAr = _kivalasztottTermek.AktualisAr,
+                EgysegAr = KivalasztottTermek.AktualisAr,
                 Afa = AFA,
-                NettoAr = _kivalasztottTermek.AktualisAr * mennyiseg,
+                NettoAr = KivalasztottTermek.AktualisAr * mennyiseg,
                 BruttoAr = bruttoAr
             };
 
             _context.RendelesTetel.Add(ujTetel);
-            _context.SaveChanges();
+            Mentés();
 
             LoadRendelesTetel();
 
@@ -241,43 +186,50 @@ namespace RendelesApp
 
         private void LoadRendelesTetel()
         {
-            if (_kivalasztottRendeles == null) return;
+            if (KivalasztottRendeles == null) return;
 
             var q = from rt in _context.RendelesTetel
-                    where rt.RendelesId == _kivalasztottRendeles.RendelesId
-                    select rt;
+                    where rt.RendelesId == KivalasztottRendeles.RendelesId
+                    select new RendelesTetelDTO
+                    {
+                        TetelId = rt.TetelId,
+                        TermekNev = rt.Termek.Nev,
+                        Mennyiseg = rt.Mennyiseg,
+                        EgysegAr = rt.EgysegAr,
+                        Afa = rt.Afa,
+                        NettoAr = rt.NettoAr,
+                        BruttoAr = rt.BruttoAr
+                    };
 
             dgvTetelek.DataSource = q.ToList();
         }
 
         private void UpdateVegosszeg()
         {
-            if (_kivalasztottRendeles == null) return;
+            if (KivalasztottRendeles == null) return;
 
             var vegosszeg = _context.RendelesTetel
-                .Where(rt => rt.RendelesId == _kivalasztottRendeles.RendelesId)
+                .Where(rt => rt.RendelesId == KivalasztottRendeles.RendelesId)
                 .Sum(rt => rt.Mennyiseg * rt.BruttoAr);
 
-            _kivalasztottRendeles.Vegosszeg = vegosszeg * (1 - _kivalasztottRendeles.Kedvezmeny);
+            KivalasztottRendeles.Vegosszeg = vegosszeg * (1 - KivalasztottRendeles.Kedvezmeny);
 
-            _context.SaveChanges();
+            Mentés();
 
             rendelesBindingSource.ResetBindings(false);
         }
 
         private void btnMentes_Click(object sender, EventArgs e)
         {
-            if (_kivalasztottCim == null || _kivalasztottRendeles == null || cbStatusz.SelectedItem == null)
-            {
-                return;
-            }
+            //if (KivalasztottCim == null || KivalasztottRendeles == null || cbStatusz.SelectedItem == null)
+            //{
+            //    return;
+            //}
 
-            _kivalasztottRendeles.SzallitasiCimId = _kivalasztottCim.CimId;
-            _kivalasztottRendeles.Statusz = cbStatusz.SelectedItem.ToString()!;
+            //KivalasztottRendeles.SzallitasiCimId = KivalasztottCim.CimId;
+            //KivalasztottRendeles.Statusz = cbStatusz.SelectedItem.ToString()!;
 
-            _context.SaveChanges();
-
-            MessageBox.Show("Rendelés sikeresen mentve.");
+            Mentés();
         }
 
         private void btnTorol_Click(object sender, EventArgs e)
@@ -288,7 +240,7 @@ namespace RendelesApp
                 return;
             }
 
-            var selectedTetel = dgvTetelek.SelectedRows[0].DataBoundItem as RendelesTetel;
+            var selectedTetel = dgvTetelek.SelectedRows[0].DataBoundItem as RendelesTetelDTO;
 
             var tetel = (from rt in _context.RendelesTetel
                          where rt.TetelId == selectedTetel!.TetelId
@@ -297,7 +249,7 @@ namespace RendelesApp
             if (tetel != null)
             {
                 _context.RendelesTetel.Remove(tetel);
-                _context.SaveChanges();
+                Mentés();
 
                 LoadRendelesTetel();
                 UpdateVegosszeg();
@@ -310,5 +262,28 @@ namespace RendelesApp
 
             UpdateVegosszeg();
         }
+
+        void Mentés()
+        {
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+    }
+
+    public class RendelesTetelDTO
+    {
+        public int TetelId { get; set; }
+        public string? TermekNev { get; set; }
+        public int Mennyiseg { get; set; }
+        public decimal EgysegAr { get; set; }
+        public decimal Afa { get; set; }
+        public decimal NettoAr { get; set; }
+        public decimal BruttoAr { get; set; }
     }
 }
