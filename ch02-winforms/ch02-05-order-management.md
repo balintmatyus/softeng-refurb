@@ -6,9 +6,9 @@ Ebben a fejezetben egy komplex rendeléskezelő felületet fogunk létrehozni, a
 
 ❶ Első lépésként hozzuk létre a rendeléskezelő űrlapunkat:
 
-1. A Visual Studio Solution Explorer-ében kattints jobb gombbal a projektre, majd válaszd az "Add" > "New Item" menüpontot.
-2. A megjelenő ablakban válaszd a "Windows Form" opciót, és nevezd el "RendelesForm"-nak.
-3. Kattints az "Add" gombra.
+1. A Visual Studio _Solution Explorer_-ében kattints jobb gombbal a projektre, majd válaszd az "**Add**" > "**New Item**" menüpontot.
+2. A megjelenő ablakban válaszd a "**Windows Form**" opciót, és nevezd el "**RendelesForm**"-nak.
+3. Kattints az "**Add**" gombra.
 
 ❷ Most, hogy létrehoztuk az új űrlapot, adjuk hozzá a szükséges vezérlőelemeket. A rendeléskezelő felületünk a következő főbb részekből fog állni:
 
@@ -19,11 +19,11 @@ Ebben a fejezetben egy komplex rendeléskezelő felületet fogunk létrehozni, a
 
 Helyezd el a következő vezérlőelemeket az űrlapon:
 
-- 3 db ListBox: ügyfelek, rendelések és termékek listázásához
-- 1 db TextBox: ügyfelek szűréséhez
-- 1 db DataGridView: rendeléstételek megjelenítéséhez
-- ComboBox-ok: szállítási cím és rendelés státuszának kiválasztásához
-- TextBox-ok: kedvezmény és mennyiség megadásához
+- 3 db `ListBox`: ügyfelek, rendelések és termékek listázásához
+- 1 db `TextBox`: ügyfelek szűréséhez
+- 1 db `DataGridView`: rendeléstételek megjelenítéséhez
+- `ComboBox`-ok: szállítási cím és rendelés státuszának kiválasztásához
+- `TextBox`-ok: kedvezmény és mennyiség megadásához
 - Gombok: új rendelés létrehozásához, tétel hozzáadásához, törléshez, mentéshez
 
 Az űrlap tervezett kinézete valahogy így nézhet ki:
@@ -53,11 +53,11 @@ public partial class RendelesForm : Form
 
 ## 3. Ügyfelek, címek és termékek listázása
 
-Most, hogy van adatbázis kapcsolatunk, töltsük fel a listáinkat adatokkal. Kezdjük az ügyfelek listázásával!
+Kezdjük az ügyfelek listázásával! Most, hogy van adatbázis kapcsolatunk, töltsük fel a listáinkat adatokkal. 
 
 ### 3.1 Ügyfelek listázása és szűrése
 
-❶ Hozzunk létre egy `BindingSource`-ot az ügyfelekhez. Ezt a legegyszerűbben a tervező nézetben tehetjük meg a vezérlő jobb felső sarkában található háromszögre való kattintással, majd az `Ugyfel` osztály kiválasztásával. Állítsd be a következőket:
+❶ Hozzunk létre egy `BindingSource`-ot az ügyfelekhez. Ezt a legegyszerűbben a tervező nézetben tehetjük meg a `ListBox` vezérlő jobb felső sarkában található háromszögre való kattintással, majd az `Ugyfel` osztály kiválasztásával. Állítsd be a következőket:
 - `DataSource`: az imént létrehozott `ugyfelBindingSource`
 - `DisplayMember`: "Nev"
 - `ValueMember`: "UgyfelId"
@@ -90,14 +90,18 @@ private void LoadUgyfelek()
 
 A `ResetCurrentItem()` metódus hívása fontos, mert ez biztosítja, hogy a felhasználói felület frissüljön, ha az adatforrás megváltozik. Ez különösen akkor hasznos, ha a kiválasztott ügyfél alapján szeretnénk további vezérlőket (például a rendelések dátumát tartalmazó `ListBox`-ot) frissíteni.
 
-### 3.2 Címek és termékek listázása
+### 3.2 Termékek listázása
 
 ❸ Töltsd be a termékeket megjelenítő `ListBox`-ot az ügyfelekhez hasonló módon a következők figyelembevételével:
 - `DataSource`: `termekBindingSource`
 - `DisplayMember`: "Nev"
 - `ValueMember`: "TermekId"
 
-❹ Töltsd be a címeket tartalmazó `ComboBox`-ot. Figyelj arra, hogy a cím egyes komponensei (irányítószám, településnév, utca, házszám stb.) összefűzve jelenjenek meg a `ComboBox` vezérlőben. Ezt a legegyszerűbben úgy teheted meg, ha egy un. DTO-t (Data Transfer Object) hozol létre. Az osztályt ne a `Form` osztályában hozd létre, hanem vele egy szinten:
+### 3.3 Címek listázása
+
+❹ Töltsd fel a címeket tartalmazó `ComboBox`-ot. Figyelj arra, hogy a cím egyes komponensei (irányítószám, településnév, utca, házszám stb.) összefűzve jelenjenek meg a `ComboBox` vezérlőben. 
+
+Az adatbázisban a cím több mezőre bontva szerepel, a `ComboBox` viszont rekordonként csak egy mező megjelenítésére képes. Sajnos olyan osztályunk, amely tulajdonságai között tartalmazza a teljes címet is, nincs.  Ez önmagában nem lenne baj, de ha adatkötést is szeretnénk használni, a tervezőben meg kell adni, hogy milyen lesz az adatkötött gyűjtemény adattípusa. Ezen a legegyszerűbben úgy lehet segíteni, ha egy un. DTO-t (Data Transfer Object) hozol létre. Az osztályt ne a `Form` osztályában hozd létre, hanem vele egy szinten, vagy ha igazán szépen szeretnéd, külön fájlban:
 
 ```csharp
 public partial class RendelesForm : Form
@@ -112,6 +116,8 @@ public class CimEgybenDTO
 }
 ```
 
+Fontos: az _access modifier_ legyen `public`, az osztály sablon alapértelmezett `internal` modifier-e nem jó, az ilyen osztályok nem jelennek meg az adatköthető vezérlők listájában. 
+
 Miután a DTO osztályt elkészítetted, hozd létre a `LoadCimek()` metódust, amiben a következő LINQ-t segítségével töltsd fel a `ComboBox` tartalmát a lekérdezés eredményével:
 
 ```csharp
@@ -125,7 +131,9 @@ var q = from x in _context.Cim
 // ToDo: query ToList() meghívása és az eredmény bekötése a létrehozandó BindingSource-ba (cimEgybenDTOBindingSource)
 ```
 
-Ügyeljünk arra, hogy a `ComboBox`-ban a `CimEgyben` mező jelenjen meg, az értékmező pedig a `CimId` legyen.
+Fontos: a `select new CimEgybenDTO {...}`  `CimEgybenDTO` típusú elemekből álló gyűjteményt hoz létre.
+
+&#10106; Valósítsd meg az adatkötést! Ügyeljünk arra, hogy a `ComboBox`-ban a `CimEgyben` mező jelenjen meg, az értékmező pedig a `CimId` legyen.
 
 ## 4. Rendelések betöltése
 
@@ -183,7 +191,7 @@ private void LoadRendelesek()
 
 ### 4.3 Ügyfél kiválasztásának kezelése
 
-❸ Adj hozzá egy eseménykezelőt az ügyfelek ListBox-ához, hogy amikor egy új ügyfelet választanak ki, betöltődjenek a hozzá tartozó rendelések:
+❸ Adj hozzá egy eseménykezelőt az ügyfelek `ListBox`-ához, hogy amikor egy új ügyfelet választanak ki, betöltődjenek a hozzá tartozó rendelések:
 
 ```csharp
 private void lbUgyfelek_SelectedIndexChanged(object sender, EventArgs e)
@@ -242,9 +250,10 @@ private void LoadRendelesTetel()
 Ez a metódus a következőket teszi:
 
 1. Ellenőrzi, hogy van-e kiválasztott rendelés.
-2. Ha van, lekérdezi az adott rendeléshez tartozó tételeket.
-3. Az eredményt DTO objektumokká alakítja.
-4. Beállítja a DataGridView adatforrását a lekérdezett tételekre.
+2. Ha van, lekérdezi az adott rendeléshez tartozó tételeket -- az eredmény `RendelesTetelDTO` típusú elemekből álló gyűjtemény.
+3. Beállítja a DataGridView adatforrását a lekérdezett tételekre.
+
+Fontos: itt most nem használunk `BindingSource`-ot, közvetlenül a `DataGridView` adatforrásába kötjük a LINQ eredményét. 
 
 ### 5.3 DataGridView beállítása
 
