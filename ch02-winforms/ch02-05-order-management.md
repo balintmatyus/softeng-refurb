@@ -162,14 +162,14 @@ Segítség:
 private void LoadRendelesek()
 {
     // 1. Ha lbUgyfelek kiválasztott eleme null, akkor return.
-    if (lbUgyfelek.SelectedItem == null) return;
+    if (ugyfelBindingSource.Current == null) return;
 
     // 2. Töröljük a DataGridView adatforrását. (null értéket állítunk be az adatforrásának)
     dgvTetelek.DataSource = null;
 
     // 3. lbUgyfelben kiválasztott ügyfélhez tartozó rendeléseket leszűrjük LINQ segítségével
     var rendeles = from x in _context.Rendeles
-               where x.UgyfelId == ((Ugyfel)lbUgyfelek.SelectedItem).UgyfelId
+               where x.UgyfelId == ((Ugyfel)ugyfelBindingSource.Current).UgyfelId
                select x;
 
     // 4. rendelesBindingSource adatforrásának beállítjuk az eredményt listáját
@@ -228,10 +228,10 @@ public class RendelesTetelDTO
 ```csharp
 private void LoadRendelesTetel()
 {
-    if (KivalasztottRendeles == null) return;
+    if (rendelesBindingSource.Current == null) return;
 
     var q = from rt in _context.RendelesTetel
-            where rt.RendelesId == KivalasztottRendeles.RendelesId
+            where rt.RendelesId == ((Rendeles)rendelesBindingSource.Current).RendelesId
             select new RendelesTetelDTO
             {
                 TetelId = rt.TetelId,
@@ -244,6 +244,7 @@ private void LoadRendelesTetel()
             };
 
     dgvTetelek.DataSource = q.ToList();
+    // UpdateVegosszeg(); ez egyelőre maradjon kommentelve, később implementáljuk
 }
 ```
 
@@ -254,6 +255,7 @@ Ez a metódus a következőket teszi:
 3. Beállítja a DataGridView adatforrását a lekérdezett tételekre.
 
 Fontos: itt most nem használunk `BindingSource`-ot, közvetlenül a `DataGridView` adatforrásába kötjük a LINQ eredményét. 
+Az `UpdateVegosszeg()` metódust később implementáljuk, addig hagyjuk a meghívását kikommentelve.
 
 ### 5.3 DataGridView beállítása
 
@@ -321,16 +323,18 @@ Most implementáljuk az új rendelés hozzáadását. Ehhez egy új gombot fogun
 2. Hozz létre egy új `Rendeles` objektumot az aktuális dátummal és alapértelmezett értékekkel.
 3. Add hozzá az új rendelést az adatbázishoz.
 4. Frissítsd a rendelések listáját és válaszd ki az új rendelést.
+5. Hozz létre egy `Mentés()` metódust, amellyel `try-catch` blokk segítségével elmentheted az adatbázisba a változtatásokat.
 
 ```csharp
 private void btnUjRendeles_Click(object sender, EventArgs e)
 {
-    if (KivalasztottUgyfel == null)
+    if (ugyfelBindingSource.Current == null)
     {
         return;
     }
 
-    var cim = KivalasztottUgyfel.Lakcim ?? _context.Cim.FirstOrDefault();
+    // Ha van beállítva az ügyfélhez alapértelmezett lakcím, akkor azt adja vissza, egyéb esetben a címek közül a legelsőt.
+    var cim = ((Ugyfel)ugyfelBindingSource.Current).Lakcim ?? _context.Cim.FirstOrDefault();
 
     if (cim == null)
     {
@@ -340,7 +344,7 @@ private void btnUjRendeles_Click(object sender, EventArgs e)
 
     var ujRendeles = new Rendeles()
     {
-        UgyfelId = KivalasztottUgyfel.UgyfelId,
+        UgyfelId = ((Ugyfel)ugyfelBindingSource.Current).UgyfelId,
         SzallitasiCimId = cim.CimId,
         RendelesDatum = DateTime.Now,
         Kedvezmeny = 0,
@@ -375,15 +379,19 @@ private void Mentés()
 
 ### 8.1 Új tétel hozzáadása
 
-Először implementáljuk az új tétel hozzáadását. Ehhez hozzunk létre egy új gombot `btnHozzaad` néven, és implementáljuk az eseménykezelőjét:
+❶ Először implementáljuk az új tétel hozzáadását. Ehhez hozzunk létre egy új gombot `btnHozzaad` néven, és implementáljuk az eseménykezelőjét:
 
-1. Ellenőrizzük, hogy érvényes-e a megadott mennyiség.
+1. Ellenőrizzük, hogy érvényes-e a megadott mennyiség. (nem negatív)
 2. Ellenőrizzük, hogy ki van-e választva rendelés és termék.
 3. Hozzunk létre egy új `RendelesTetel` objektumot a megadott adatokkal.
 4. Adjuk hozzá az új tételt az adatbázishoz és mentsük a változásokat.
 5. Frissítsük a tételek listáját és a végösszeget. (utóbbi egyelőre kommentelve)
 
+Az ÁFA értékét érdemes adatbázisban tárolni, azonban a projektben konstansként definiáljuk a `RendelesForm` osztály mezőjeként. A konstansok változójának nevét jellemzően csupa nagybetűvel írjuk. Típusa `decimal`. A megadott érték `0.27m`, amelynek végén található `m` a decimális típusra utal.
+
 ```csharp
+private const decimal AFA = .27m;
+
 private void btnHozzaad_Click(object sender, EventArgs e)
 {
     if (!int.TryParse(txtMennyiseg.Text, out int mennyiseg) || mennyiseg <= 0)
@@ -392,22 +400,24 @@ private void btnHozzaad_Click(object sender, EventArgs e)
         return;
     }
 
-    if (KivalasztottRendeles == null || KivalasztottTermek == null)
+    if (rendelesBindingSource.Current == null || termekBindingSource.Current == null)
     {
         MessageBox.Show("Nincs kiválasztva rendelés vagy termék!");
         return;
     }
 
-    decimal bruttoAr = KivalasztottTermek.AktualisAr * (1 + AFA);
+    var kivalasztottTermek = (Termek)termekBindingSource.Current;
+
+    decimal bruttoAr = kivalasztottTermek.AktualisAr * (1 + AFA);
 
     var ujTetel = new RendelesTetel
     {
-        RendelesId = KivalasztottRendeles.RendelesId,
-        TermekId = KivalasztottTermek.TermekId,
+        RendelesId = ((Rendeles)rendelesBindingSource.Current).RendelesId,
+        TermekId = kivalasztottTermek.TermekId,
         Mennyiseg = mennyiseg,
-        EgysegAr = KivalasztottTermek.AktualisAr,
+        EgysegAr = kivalasztottTermek.AktualisAr,
         Afa = AFA,
-        NettoAr = KivalasztottTermek.AktualisAr * mennyiseg,
+        NettoAr = kivalasztottTermek.AktualisAr * mennyiseg,
         BruttoAr = bruttoAr
     };
 
@@ -415,14 +425,12 @@ private void btnHozzaad_Click(object sender, EventArgs e)
     Mentés();
 
     LoadRendelesTetel();
-
-    UpdateVegosszeg();
 }
 ```
 
 ### 8.2 Tétel törlése
 
-Most implementáljuk a tétel törlését. Rendeljünk a `btnTorol` gombhoz eseménykezelőt:
+❷ Most implementáljuk a tétel törlését. Rendeljünk a `btnTorol` gombhoz eseménykezelőt:
 
 ```csharp
 private void btnTorol_Click(object sender, EventArgs e)
@@ -445,7 +453,6 @@ private void btnTorol_Click(object sender, EventArgs e)
         Mentés();
 
         LoadRendelesTetel();
-        UpdateVegosszeg();
     }
 }
 ```
@@ -458,24 +465,23 @@ Ez a kód a következőket teszi:
 
 ### 8.3 Végösszeg számítása
 
-Most implementáljuk a végösszeg számítását. Hozzunk létre egy új metódust `UpdateVegosszeg` néven:
+❸ Most implementáljuk a végösszeg számítását. Hozzunk létre egy új metódust `UpdateVegosszeg` néven:
 
 ```csharp
 private void UpdateVegosszeg()
 {
-    if (lbRendeles.SelectedItem == null) return;
+    if (rendelesBindingSource.Current == null) return;
 
-    var selectedRendeles = (Rendeles)lbRendeles.SelectedItem;
+    var kivalasztottRendeles = (Rendeles)rendelesBindingSource.Current;
 
-    var vegosszeg = (from rt in _context.RendelesTetel
-                     where rt.RendelesId == selectedRendeles.RendelesId
-                     select rt.Mennyiseg * rt.BruttoAr).Sum();
+    var vegosszeg = _context.RendelesTetel
+        .Where(rt => rt.RendelesId == kivalasztottRendeles.RendelesId)
+        .Sum(rt => rt.Mennyiseg * rt.BruttoAr);
 
-    selectedRendeles.Vegosszeg = vegosszeg * (1 - selectedRendeles.Kedvezmeny);
+    kivalasztottRendeles.Vegosszeg = vegosszeg * (1 - kivalasztottRendeles.Kedvezmeny);
 
-    Mentes();
+    Mentés();
 
-    // Frissítjük a felületet
     rendelesBindingSource.ResetBindings(false);
 }
 ```
@@ -486,48 +492,6 @@ Ez a metódus a következőket teszi:
 3. Alkalmazza a kedvezményt a végösszegre.
 4. Menti a változásokat az adatbázisba.
 5. Frissíti a felhasználói felületet.
-
-### 8.4 Felület frissítése
-
-Most frissítsük a felületet, hogy megjelenítse a végösszeget. Adjunk hozzá egy új Label vezérlőt `lblVegosszeg` néven, és kössük össze a rendelés végösszegével:
-
-```csharp
-private void SetupDataBindings()
-{
-    // ... Korábbi kötések ...
-
-    Binding vegosszegBinding = lblVegosszeg.DataBindings.Add("Text", rendelesBindingSource, "Vegosszeg", true);
-    vegosszegBinding.FormattingEnabled = true;
-    vegosszegBinding.FormatString = "C0"; // Pénznem formátum, nulla tizedesjeggyel
-}
-```
-
-### 8.5 Események összekapcsolása
-
-Végül, módosítsuk a `lbRendeles_SelectedIndexChanged` eseménykezelőt, hogy frissítse a végösszeget is:
-
-```csharp
-private void lbRendeles_SelectedIndexChanged(object sender, EventArgs e)
-{
-    LoadRendelesTetel();
-    UpdateVegosszeg();
-}
-```
-
-## 9. Mentés funkció implementálása
-
-A mentés funkció kulcsfontosságú egy adatkezelő alkalmazásban. Bár eddig is használtunk mentést egyes műveletek után, most egy explicit mentés funkciót fogunk létrehozni, amely lehetővé teszi a felhasználó számára, hogy bármikor elmenthesse a módosításokat.
-
-### 9.1 Mentés funkció implementálása
-
-Adj hozzá egy új eseménykezelőt a mentés gombhoz:
-
-```csharp
-private void btnMentes_Click(object sender, EventArgs e)
-{
-    Mentés();
-}
-```
 
 # Összefoglalás
 
