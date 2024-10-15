@@ -122,7 +122,7 @@ var q = from x in _context.Cim
             CimEgyben = $"{x.Iranyitoszam}-{x.Varos}, {x.Orszag}: {x.Utca} {x.Hazszam}"
         };
 
-// query ToList() meghívása és az eredmény bekötése a létrehozandó BindingSource-ba (cimEgybenDTOBindingSource)
+// ToDo: query ToList() meghívása és az eredmény bekötése a létrehozandó BindingSource-ba (cimEgybenDTOBindingSource)
 ```
 
 Ügyeljünk arra, hogy a `ComboBox`-ban a `CimEgyben` mező jelenjen meg, az értékmező pedig a `CimId` legyen.
