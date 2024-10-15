@@ -14,6 +14,7 @@ namespace RendelesApp
     public partial class RendelesForm : Form
     {
         private readonly RendelesDbContext _context;
+
         private const decimal AFA = .27m;
 
         private Ugyfel? KivalasztottUgyfel => lbUgyfelek.SelectedItem as Ugyfel;
@@ -29,8 +30,12 @@ namespace RendelesApp
 
         private void RendelesForm_Load(object sender, EventArgs e)
         {
-            LoadData();
-            SetupDataBindings();
+            LoadUgyfelek();
+            LoadCimek();
+
+            termekBindingSource.DataSource = _context.Termek.ToList();
+
+            //SetupDataBindings();
         }
 
         private void SetupDataBindings()
@@ -41,13 +46,6 @@ namespace RendelesApp
             binding.Parse += Binding_Parse;
 
             binding.ReadValue();
-        }
-
-        private void LoadData()
-        {
-            LoadUgyfelek();
-            cimBindingSource.DataSource = _context.Cim.ToList();
-            termekBindingSource.DataSource = _context.Termek.ToList();
         }
 
         private void LoadUgyfelek()
@@ -62,14 +60,26 @@ namespace RendelesApp
             ugyfelBindingSource.ResetCurrentItem();
         }
 
+        private void LoadCimek()
+        {
+            var q = from x in _context.Cim
+                    select new CimEgybenDTO
+                    {
+                        CimId = x.CimId,
+                        CimEgyben = $"{x.Iranyitoszam}-{x.Varos}, {x.Orszag}: {x.Utca} {x.Hazszam}"
+                    };
+
+            cimEgybenDTOBindingSource.DataSource = q.ToList();
+        }
+
         private void LoadRendelesek()
         {
-            if (KivalasztottUgyfel == null) return;
+            if (lbUgyfelek.SelectedItem == null) return;
 
             dgvTetelek.DataSource = null;
 
             var rendeles = from x in _context.Rendeles
-                           where x.UgyfelId == KivalasztottUgyfel.UgyfelId
+                           where x.UgyfelId == ((Ugyfel)lbUgyfelek.SelectedItem).UgyfelId
                            select x;
 
             rendelesBindingSource.DataSource = rendeles.ToList();
@@ -116,12 +126,12 @@ namespace RendelesApp
 
         private void btnUjRendeles_Click(object sender, EventArgs e)
         {
-            if (KivalasztottUgyfel == null)
+            if ((Ugyfel)lbUgyfelek.SelectedItem == null)
             {
                 return;
             }
 
-            var cim = KivalasztottUgyfel.Lakcim ?? _context.Cim.FirstOrDefault();
+            var cim = ((Ugyfel)lbUgyfelek.SelectedItem).Lakcim ?? _context.Cim.FirstOrDefault();
 
             if (cim == null)
             {
@@ -131,7 +141,7 @@ namespace RendelesApp
 
             var ujRendeles = new Rendeles()
             {
-                UgyfelId = KivalasztottUgyfel.UgyfelId,
+                UgyfelId = ((Ugyfel)lbUgyfelek.SelectedItem).UgyfelId,
                 SzallitasiCimId = cim.CimId,
                 RendelesDatum = DateTime.Now,
                 Kedvezmeny = 0,
@@ -274,6 +284,12 @@ namespace RendelesApp
                 MessageBox.Show(ex.Message);
             }
         }
+    }
+
+    public class CimEgybenDTO
+    {
+        public int CimId { get; set; }
+        public string? CimEgyben { get; set; }
     }
 
     public class RendelesTetelDTO

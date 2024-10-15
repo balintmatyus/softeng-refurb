@@ -4,13 +4,13 @@ Ebben a fejezetben egy komplex rendeléskezelő felületet fogunk létrehozni, a
 
 ## 1. A RendelesForm létrehozása és felépítése
 
-Első lépésként hozzuk létre a rendeléskezelő űrlapunkat:
+❶ Első lépésként hozzuk létre a rendeléskezelő űrlapunkat:
 
 1. A Visual Studio Solution Explorer-ében kattints jobb gombbal a projektre, majd válaszd az "Add" > "New Item" menüpontot.
 2. A megjelenő ablakban válaszd a "Windows Form" opciót, és nevezd el "RendelesForm"-nak.
 3. Kattints az "Add" gombra.
 
-Most, hogy létrehoztuk az új űrlapot, adjuk hozzá a szükséges vezérlőelemeket. A rendeléskezelő felületünk a következő főbb részekből fog állni:
+❷ Most, hogy létrehoztuk az új űrlapot, adjuk hozzá a szükséges vezérlőelemeket. A rendeléskezelő felületünk a következő főbb részekből fog állni:
 
 - Ügyfél kiválasztása és szűrése
 - Rendelések listázása
@@ -34,18 +34,12 @@ Az űrlap tervezett kinézete valahogy így nézhet ki:
 
 A rendeléskezelő űrlapunknak szüksége lesz az adatbázishoz való kapcsolódásra. Ehhez használjuk az Entity Framework Core által generált `RendelesDbContext` osztályt.
 
-Adj hozzá egy privát mezőt az osztályodhoz a `DbContext` példány tárolására:
+❶ Adj hozzá egy privát mezőt az osztályodhoz a `DbContext` példány tárolására, majd példányosítsd a konstruktorban.
 
 ```csharp
 public partial class RendelesForm : Form
 {
     private readonly RendelesDbContext _context;
-    private const decimal AFA = .27m;
-
-    private Ugyfel? KivalasztottUgyfel => lbUgyfelek.SelectedItem as Ugyfel;
-    private Cim? KivalasztottCim => cbCimek.SelectedItem as Cim;
-    private Rendeles? KivalasztottRendeles => lbRendeles.SelectedItem as Rendeles;
-    private Termek? KivalasztottTermek => lbTermek.SelectedItem as Termek;
 
     public RendelesForm()
     {
@@ -57,29 +51,30 @@ public partial class RendelesForm : Form
 }
 ```
 
-A konstruktorban példányosítjuk a `RendelesDbContext`-et. Ez biztosítja, hogy az űrlap teljes életciklusa során rendelkezésünkre álljon az adatbázis-kapcsolat.
-
 ## 3. Ügyfelek, címek és termékek listázása
 
 Most, hogy van adatbázis kapcsolatunk, töltsük fel a listáinkat adatokkal. Kezdjük az ügyfelek listázásával!
 
 ### 3.1 Ügyfelek listázása és szűrése
 
-Először hozzunk létre egy `BindingSource`-ot az ügyfelekhez. Ezt a legegyszerűbben a tervező nézetben tehetjük meg:
-
-1. Kattints a ListBox vezérlőre, amely az ügyfeleket fogja megjeleníteni.
-2. A jobb felső sarokban megjelenő kis nyílra kattintva válaszd a "Choose Data Source" opciót.
-3. Az "Add Project Data Source" gombra kattintva hozz létre egy új BindingSource-ot az Ugyfel osztály kiválasztásával.
-
-Most állítsuk be a ListBox tulajdonságait:
-
+❶ Hozzunk létre egy `BindingSource`-ot az ügyfelekhez. Ezt a legegyszerűbben a tervező nézetben tehetjük meg a vezérlő jobb felső sarkában található háromszögre való kattintással, majd az `Ugyfel` osztály kiválasztásával. Állítsd be a következőket:
 - `DataSource`: az imént létrehozott `ugyfelBindingSource`
 - `DisplayMember`: "Nev"
 - `ValueMember`: "UgyfelId"
 
-Ezután implementáljuk az ügyfelek betöltését és szűrését:
+❷ Implementáld az ügyfelek betöltését és szűrését a megfelelő `TextBox` tartalma alapján a `LoadUgyfelek()` metódus létrehozásával. A metódus fusson le a `Form` betöltését követően is, valamint akkor is, amikor a `TextBox` tartalma változik. Az ügyfelek legyenek nevük szerint sorrendbe rendezve. A szűrés név és e-mail cím alapján történjen.
 
 ```csharp
+private void RendelesForm_Load(object sender, EventArgs e)
+{
+    LoadUgyfelek();
+}
+
+private void txtSzuro_TextChanged(object sender, EventArgs e)
+{
+    LoadUgyfelek();
+}
+
 private void LoadUgyfelek()
 {
     var q = from x in _context.Ugyfel
@@ -93,121 +88,102 @@ private void LoadUgyfelek()
 }
 ```
 
-A `ResetCurrentItem()` metódus hívása fontos, mert ez biztosítja, hogy a felhasználói felület frissüljön, ha az adatforrás megváltozik. Ez különösen akkor hasznos, a kiválasztott ügyfél alapján szeretnénk további vezérlőket frissíteni.
-
-Ne felejtsd el hozzáadni a szűrő TextBox `TextChanged` eseménykezelőjét:
-
-```csharp
-private void txtSzuro_TextChanged(object sender, EventArgs e)
-{
-    LoadUgyfelek();
-}
-```
+A `ResetCurrentItem()` metódus hívása fontos, mert ez biztosítja, hogy a felhasználói felület frissüljön, ha az adatforrás megváltozik. Ez különösen akkor hasznos, ha a kiválasztott ügyfél alapján szeretnénk további vezérlőket (például a rendelések dátumát tartalmazó `ListBox`-ot) frissíteni.
 
 ### 3.2 Címek és termékek listázása
 
-A címek és termékek listázása hasonló módon történik. A termékek esetén ugyanúgy létrehozzuk a BindingSource-t, mint az előbbi példában, azonban a címeknél egy lépéssel többre lesz szükség. Ennek oka, hogy a cím részeit képező mezőket össze kellene fűzni egy (számított) mezővé, hiszen egy stringként szeretnénk megjeleníteni a címeket az irányítószámtól a település és közterület nevén keresztül a házszámig.
-
-Ehhez először módosítani fogjuk a `Models` mappában `Cim` osztályunkat a következő sor hozzáadásával:
-```csharp
-public partial class Cim
-{
-    [Key]
-    [Column("CimID")]
-    public int CimId { get; set; }
-
-    [StringLength(100)]
-    public string Utca { get; set; } = null!;
-
-    // ... többi mező
-
-    public string CimEgyben => $"{Iranyitoszam}-{Varos}, {Orszag}: {Utca} {Hazszam}";
-}
-```
-
-Ezután létrehozhatod a BindingSource-okat ezekhez is a tervező nézetben, majd beállíthatod a megfelelő tulajdonságokat:
-
-Címek ComboBox:
-- `DataSource`: `cimBindingSource`
-- `DisplayMember`: "CimEgyben"
-- `ValueMember`: "CimId"
-
-Termékek ListBox:
+❸ Töltsd be a termékeket megjelenítő `ListBox`-ot az ügyfelekhez hasonló módon a következők figyelembevételével:
 - `DataSource`: `termekBindingSource`
 - `DisplayMember`: "Nev"
 - `ValueMember`: "TermekId"
 
-A `Form_Load` eseményben töltsük be az adatokat:
+❹ Töltsd be a címeket tartalmazó `ComboBox`-ot. Figyelj arra, hogy a cím egyes komponensei (irányítószám, településnév, utca, házszám stb.) összefűzve jelenjenek meg a `ComboBox` vezérlőben. Ezt a legegyszerűbben úgy teheted meg, ha egy un. DTO-t (Data Transfer Object) hozol létre. Az osztályt ne a `Form` osztályában hozd létre, hanem vele egy szinten:
 
 ```csharp
-private void RendelesForm_Load(object sender, EventArgs e)
+public partial class RendelesForm : Form
 {
-    LoadData();
-    //SetupDataBindings(); // ezt később implementáljuk
+    // ...
 }
 
-private void LoadData()
+public class CimEgybenDTO
 {
-    LoadUgyfelek();
-    cimBindingSource.DataSource = _context.Cim.ToList();
-    termekBindingSource.DataSource = _context.Termek.ToList();
+    public int CimId { get; set; }
+    public string? CimEgyben { get; set; }
 }
 ```
 
-Ezzel a lépéssel sikeresen létrehoztuk a rendeléskezelő űrlapunk alapjait, és feltöltöttük a szükséges listákat adatokkal. A következő lépésekben a rendelések kezelésével és a felhasználói interakciók implementálásával fogunk foglalkozni.
+Miután a DTO osztályt elkészítetted, hozd létre a `LoadCimek()` metódust, amiben a következő LINQ-t segítségével töltsd fel a `ComboBox` tartalmát a lekérdezés eredményével:
+
+```csharp
+var q = from x in _context.Cim
+        select new CimEgybenDTO
+        {
+            CimId = x.CimId,
+            CimEgyben = $"{x.Iranyitoszam}-{x.Varos}, {x.Orszag}: {x.Utca} {x.Hazszam}"
+        };
+
+// query ToList() meghívása és az eredmény bekötése a létrehozandó BindingSource-ba (cimEgybenDTOBindingSource)
+```
+
+Ügyeljünk arra, hogy a `ComboBox`-ban a `CimEgyben` mező jelenjen meg, az értékmező pedig a `CimId` legyen.
 
 ## 4. Rendelések betöltése
 
 ### 4.1 Rendelések ListBox beállítása
 
-Először is, állítsuk be a rendeléseket megjelenítő ListBox tulajdonságait a tervező nézetben:
+❶ Állítsd be a rendeléseket megjelenítő ListBox tulajdonságait a tervező nézetben:
 
-1. Kattints a rendeléseket megjelenítő ListBox-ra (nevezzük el `lbRendeles`-nek).
-2. A Properties ablakban keresd meg a `DataSource` tulajdonságot, és állítsd be egy új BindingSource-ra, amit nevezz el `rendelesBindingSource`-nak.
+1. Nevezzük el `lbRendeles`-nek.
+2. A `DataSource` tulajdonságot állítsd be egy új BindingSource-ra (`rendelesBindingSource`).
 3. Állítsd be a `DisplayMember` tulajdonságot "RendelesDatum"-ra. Ez fogja biztosítani, hogy a rendelés dátuma jelenjen meg a listában.
 4. A `ValueMember` tulajdonságot állítsd "RendelesId"-re.
 
 ### 4.2 Rendelések betöltése a kiválasztott ügyfélhez
 
-Most implementáljuk a rendelések betöltését. Ezt egy külön metódusban fogjuk megvalósítani, amit akkor hívunk meg, amikor egy új ügyfelet választanak ki.
-
-Adj hozzá egy új metódust a `RendelesForm` osztályhoz:
-
-```csharp
-private void LoadRendelesek()
-{
-    if (KivalasztottUgyfel == null) return;
-
-    dgvTetelek.DataSource = null;
-
-    var rendeles = from x in _context.Rendeles
-                   where x.UgyfelId == KivalasztottUgyfel.UgyfelId
-                   select x;
-
-    rendelesBindingSource.DataSource = rendeles.ToList();
-    lbRendeles.DataSource = rendelesBindingSource;
-
-    if (lbRendeles.Items.Count > 0)
-    {
-        lbRendeles.SelectedIndex = 0;
-    }
-
-    rendelesBindingSource.ResetCurrentItem();
-}
-```
-
-Ez a metódus a következőket teszi:
-
+❷ Hozd létre a `LoadRendelesek()` metódust a `RendelesForm` osztályban és valósítsd meg a következő lépéseket:
 1. Ellenőrzi, hogy van-e kiválasztott ügyfél.
+1. Töröljük a `DataGridView` adatforrását.
 2. Ha van, lekérdezi az adott ügyfélhez tartozó rendeléseket.
 3. Beállítja a `rendelesBindingSource` adatforrását a lekérdezett rendelésekre.
 4. Frissíti a `lbRendeles` ListBox adatforrását.
 5. Ha vannak rendelések, kiválasztja az elsőt.
 6. Végül meghívja a `ResetCurrentItem()` metódust, hogy frissítse a felhasználói felületet.
 
+Segítség:
+```csharp
+private void LoadRendelesek()
+{
+    // 1. Ha lbUgyfelek kiválasztott eleme null, akkor return.
+    if (lbUgyfelek.SelectedItem == null) return;
+
+    // 2. Töröljük a DataGridView adatforrását. (null értéket állítunk be az adatforrásának)
+    dgvTetelek.DataSource = null;
+
+    // 3. lbUgyfelben kiválasztott ügyfélhez tartozó rendeléseket leszűrjük LINQ segítségével
+    var rendeles = from x in _context.Rendeles
+               where x.UgyfelId == ((Ugyfel)lbUgyfelek.SelectedItem).UgyfelId
+               select x;
+
+    // 4. rendelesBindingSource adatforrásának beállítjuk az eredményt listáját
+    rendelesBindingSource.DataSource = rendeles.ToList();
+
+    // 5. újra bekötjük az lbRendeles adatforrását
+    lbRendeles.DataSource = rendelesBindingSource;
+
+    // 6. Ha vannak rendelések, akkor kiválasztjuk az elsőt.
+    if (lbRendeles.Items.Count > 0)
+    {
+        lbRendeles.SelectedIndex = 0;
+    }
+
+    // meghívjuk a ResetCurrentItem() metódusát a releváns bindingsourcenak.
+    rendelesBindingSource.ResetCurrentItem();
+}
+```
+
 ### 4.3 Ügyfél kiválasztásának kezelése
 
-Most hozzá kell adnunk egy eseménykezelőt az ügyfelek ListBox-ához, hogy amikor egy új ügyfelet választanak ki, betöltődjenek a hozzá tartozó rendelések:
+❸ Adj hozzá egy eseménykezelőt az ügyfelek ListBox-ához, hogy amikor egy új ügyfelet választanak ki, betöltődjenek a hozzá tartozó rendelések:
 
 ```csharp
 private void lbUgyfelek_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,9 +196,9 @@ private void lbUgyfelek_SelectedIndexChanged(object sender, EventArgs e)
 
 ### 5.1 DTO objektum létrehozása
 
-Mielőtt a rendeléstételeket betöltenénk a DataGridView-ba, hozzunk létre egy DTO (Data Transfer Object) osztályt.
+Mielőtt a rendeléstételeket betöltenénk a DataGridView-ba, hozzunk létre egy újabb DTO (Data Transfer Object) osztályt. Az a célunk, hogy a `Rendeles` osztály egyik idegenkulcs mezőjét (Termék) lecseréljük és a termék ID-ja helyett annak neve jelenjen meg.
 
-Hozz létre egy új osztályt `RendelesTetelDTO` néven a `RendelesForm.cs` fájl végén:
+❶ Hozz létre egy új osztályt `RendelesTetelDTO` néven a `RendelesForm.cs` fájl végén:
 
 ```csharp
 public class RendelesTetelDTO
@@ -239,7 +215,7 @@ public class RendelesTetelDTO
 
 ### 5.2 Rendeléstételek betöltése
 
-Most implementáljuk a rendeléstételek betöltését. Adj hozzá egy új metódust a `RendelesForm` osztályhoz:
+❷ Implementáld a rendeléstételek betöltését. Add hozzá a következő új metódust a `RendelesForm` osztályhoz:
 
 ```csharp
 private void LoadRendelesTetel()
@@ -272,20 +248,17 @@ Ez a metódus a következőket teszi:
 
 ### 5.3 DataGridView beállítása
 
-Most állítsuk be a DataGridView tulajdonságait, hogy megfeleljen az igényeinknek:
-
-1. Válaszd ki a `dgvTetelek` DataGridView-t a Form Designer-ben.
-2. A Properties ablakban állítsd be a következő tulajdonságokat:
-   - `AllowUserToAddRows`: False
-   - `AllowUserToDeleteRows`: False
-   - `ReadOnly`: True
-   - `SelectionMode`: FullRowSelect
+❸ Állítsd be a DataGridView tulajdonságait, hogy megfeleljen az igényeinknek:
+- `AllowUserToAddRows`: False
+- `AllowUserToDeleteRows`: False
+- `ReadOnly`: True
+- `SelectionMode`: FullRowSelect
 
 Ezek a beállítások megakadályozzák, hogy a felhasználó közvetlenül szerkessze a DataGridView tartalmát, és biztosítják, hogy egy egész sort lehessen kiválasztani.
 
 ### 5.4 Rendelés kiválasztásának kezelése
 
-Most hozzá kell adnunk egy eseménykezelőt a rendelések ListBox-ához, hogy amikor egy új rendelést választanak ki, betöltődjenek a hozzá tartozó tételek:
+❹ Most hozzá kell adnunk egy eseménykezelőt a rendelések ListBox-ához, hogy amikor egy új rendelést választanak ki, betöltődjenek a hozzá tartozó tételek:
 
 ```csharp
 private void lbRendeles_SelectedIndexChanged(object sender, EventArgs e)
@@ -298,7 +271,7 @@ private void lbRendeles_SelectedIndexChanged(object sender, EventArgs e)
 
 ### 6.1 Rendelés címének adatkötése
 
-A rendelés címét már korábban beállítottuk, de most kössük össze a kiválasztott rendeléssel:
+❶ A rendelés címét már korábban beállítottuk, de most kössük össze a kiválasztott rendeléssel:
 
 1. Válaszd ki a `cbCimek` ComboBox-ot a Form Designer-ben.
 2. A Properties ablakban keresd meg a `DataBindings` tulajdonságot.
@@ -308,79 +281,15 @@ A rendelés címét már korábban beállítottuk, de most kössük össze a kiv
 
 ### 6.2 Kedvezmény mértékének adatkötése
 
-Az a célunk, hogy az értékek %-osan jelenjenek meg, azonban a kedvezmények mértéke az adatábizsban törtként, 0-1 közötti számként tároljuk ezt az értéket. Egyszerre szeretnénk a GUI-t megfelelően frissíteni, valamint a mezőbe nem 0-1 közötti értékeket szeretnénk írni, hanem 0-100 közötti %-os értékeket. Ennek megvalósítása kissé komplex, lentebb olvasható a forráskód magyarázattal lépésről lépésre.
+Az a célunk, hogy az értékek %-osan jelenjenek meg, azonban a kedvezmények mértéke az adatábizsban törtként, 0-1 közötti számként tároljuk ezt az értéket. 
 
-```csharp
-private void SetupDataBindings()
-{
-    Binding binding = txtKedvezmeny.DataBindings.Add("Text", rendelesBindingSource, "Kedvezmeny", true, DataSourceUpdateMode.OnPropertyChanged);
-    binding.FormattingEnabled = true;
-    binding.Format += Binding_Format;
-    binding.Parse += Binding_Parse;
+❷ A kedvezmény `TextBox` vezérlőjét kijelölve, a *Properties* ablakban nyissuk meg a *(DataBindings)* mezőn (legfelül) belül található *(Advanced)* mezőt, majd a mellette jobbra található [...] gombra kattintsunk. Állítsuk be az alábbi képen szereplő mezők szerint az adatkötést.
 
-    binding.ReadValue();
-}
-```
-
-1. `Binding binding = txtKedvezmeny.DataBindings.Add(...)`: Ez a sor létrehoz egy új adatkötést a `txtKedvezmeny` TextBox-hoz. 
-   - "Text": A TextBox melyik tulajdonságát kötjük (a megjelenített szöveget).
-   - `rendelesBindingSource`: Az adatforrás, amihez kötünk.
-   - "Kedvezmeny": A forrás melyik tulajdonságához kötünk.
-   - `true`: Engedélyezi a formázást.
-   - `DataSourceUpdateMode.OnPropertyChanged`: Meghatározza, mikor frissüljön az adatforrás (amikor a tulajdonság értéke változik).
-
-2. `binding.FormattingEnabled = true`: Engedélyezi az egyéni formázást a kötéshez.
-
-3. `binding.Format += Binding_Format`: Hozzárendeli a `Binding_Format` metódust a formázási eseményhez.
-
-4. `binding.Parse += Binding_Parse`: Hozzárendeli a `Binding_Parse` metódust az elemzési eseményhez.
-
-5. `binding.ReadValue()`: Azonnal beolvassa és alkalmazza az értéket a vezérlőelemre.
-
-```csharp
-private void Binding_Parse(object? sender, ConvertEventArgs e)
-{
-    if (e.DesiredType != typeof(decimal)) return;
-
-    string stringValue = e.Value?.ToString()?.Replace("%", "").Trim() ?? "0";
-    if (decimal.TryParse(stringValue, out decimal result))
-    {
-        e.Value = result / 100m;
-    }
-}
-```
-
-Ez a metódus felelős a felhasználó által beírt érték konvertálásáért a megfelelő adattípusra:
-
-1. Ellenőrzi, hogy a kívánt típus decimal-e. Ha nem, kilép a metódusból.
-2. Az `e.Value`-ból (ami a TextBox-ba írt szöveg) eltávolítja a % jelet és a felesleges szóközöket.
-3. Megpróbálja a stringet decimális számmá konvertálni.
-4. Ha sikerül, az eredményt elosztja 100-zal (mivel a kedvezményt tizedesként tároljuk, nem százalékként).
-
-```csharp
-private void Binding_Format(object? sender, ConvertEventArgs e)
-{
-    if (e.DesiredType != typeof(string)) return;
-
-    if (e.Value is decimal value)
-    {
-        e.Value = value.ToString("P");
-    }
-}
-```
-
-Ez a metódus felelős az adatforrásból érkező érték formázásáért a megjelenítéshez:
-
-1. Ellenőrzi, hogy a kívánt típus string-e. Ha nem, kilép a metódusból.
-2. Ha az `e.Value` decimális szám, akkor azt százalékos formátumra alakítja a "P" formázó karakterrel.
-
-Összességében ez a kód lehetővé teszi, hogy a kedvezményt az adatbázisban tizedes törtként tároljuk (pl. 0.1 = 10%), de a felhasználói felületen százalékos formában jelenjen meg és lehessen szerkeszteni (pl. 10%). A `Binding_Parse` metódus gondoskodik arról, hogy a felhasználó által beírt százalékos érték megfelelően konvertálódjon vissza tizedes törtre, míg a `Binding_Format` metódus biztosítja, hogy az adatbázisból kiolvasott tizedes tört százalékos formában jelenjen meg a TextBox-ban.
-
-Ne felejtsd el meghívni a `SetupDataBindings()` metódust a Form konstruktorában vagy a `Load` eseménykezelőjében.
+![Advanced binding](./05-img/image-02.png)
 
 ### 6.3 Státusz adatkötése
 
-A státusz ComboBox-ot a következőképpen állítsd be:
+❸ A státusz ComboBox-ot a következőképpen állítsd be:
 
 1. Válaszd ki a `cbStatusz` ComboBox-ot a Form Designer-ben.
 2. A Properties ablakban állítsd be az `Items` tulajdonságot a következő értékekkel:
@@ -388,7 +297,7 @@ A státusz ComboBox-ot a következőképpen állítsd be:
    - "Szállítás"
    - "Kiszállítva"
    - "Törölve"
-3. A `DataBindings` tulajdonságnál add hozzá a `Text` tulajdonságot a `rendelesBindingSource`-hoz, és kösd a `Statusz` mezőhöz.
+3. A fentihez hasonló módon a `DataBindings` tulajdonságnál add hozzá a `Text` tulajdonságot a `rendelesBindingSource`-hoz, és kösd a `Statusz` mezőhöz.
 4. Az `UpdateMode`-ot állítsd `OnPropertyChanged`-re.
 
 ## 7. Új rendelés hozzáadása
@@ -397,7 +306,7 @@ Most implementáljuk az új rendelés hozzáadását. Ehhez egy új gombot fogun
 
 ### 7.1 Új rendelés gomb eseménykezelőjének implementálása
 
-Valósítsd meg a következőket:
+❶ Valósítsd meg a következőket:
 
 1. Ellenőrizd, hogy van-e kiválasztott ügyfél.
 2. Hozz létre egy új `Rendeles` objektumot az aktuális dátummal és alapértelmezett értékekkel.

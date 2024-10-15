@@ -46,7 +46,7 @@
             label4 = new Label();
             btnUjRendeles = new Button();
             cbCimek = new ComboBox();
-            cimBindingSource = new BindingSource(components);
+            cimEgybenDTOBindingSource = new BindingSource(components);
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
@@ -64,7 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvTetelek).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rendelesBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)allTermekBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)cimBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cimEgybenDTOBindingSource).BeginInit();
             SuspendLayout();
             // 
             // lbUgyfelek
@@ -210,7 +210,7 @@
             // cbCimek
             // 
             cbCimek.DataBindings.Add(new Binding("SelectedValue", rendelesBindingSource, "SzallitasiCimId", true, DataSourceUpdateMode.OnPropertyChanged));
-            cbCimek.DataSource = cimBindingSource;
+            cbCimek.DataSource = cimEgybenDTOBindingSource;
             cbCimek.DisplayMember = "CimEgyben";
             cbCimek.FormattingEnabled = true;
             cbCimek.Location = new Point(522, 76);
@@ -219,9 +219,9 @@
             cbCimek.TabIndex = 12;
             cbCimek.ValueMember = "CimId";
             // 
-            // cimBindingSource
+            // cimEgybenDTOBindingSource
             // 
-            cimBindingSource.DataSource = typeof(Models.Cim);
+            cimEgybenDTOBindingSource.DataSource = typeof(CimEgybenDTO);
             // 
             // label6
             // 
@@ -261,6 +261,7 @@
             // 
             // txtKedvezmeny
             // 
+            txtKedvezmeny.DataBindings.Add(new Binding("Text", rendelesBindingSource, "Kedvezmeny", true, DataSourceUpdateMode.OnPropertyChanged, "0", "0.00%"));
             txtKedvezmeny.Location = new Point(981, 76);
             txtKedvezmeny.Name = "txtKedvezmeny";
             txtKedvezmeny.Size = new Size(95, 23);
@@ -335,7 +336,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1671, 482);
+            ClientSize = new Size(1540, 482);
             Controls.Add(label11);
             Controls.Add(cbStatusz);
             Controls.Add(label1);
@@ -369,7 +370,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvTetelek).EndInit();
             ((System.ComponentModel.ISupportInitialize)rendelesBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)allTermekBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)cimBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cimEgybenDTOBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -395,7 +396,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private BindingSource cimBindingSource;
         private Label label9;
         private TextBox txtKedvezmeny;
         private Button btnMentes;
@@ -406,5 +406,6 @@
         private Label label10;
         private Label label11;
         private BindingSource allTermekBindingSource;
+        private BindingSource cimEgybenDTOBindingSource;
     }
 }
