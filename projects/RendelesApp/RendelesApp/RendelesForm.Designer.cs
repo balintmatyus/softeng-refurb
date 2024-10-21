@@ -285,6 +285,7 @@
             btnExcel.TabIndex = 16;
             btnExcel.Text = "Excel export";
             btnExcel.UseVisualStyleBackColor = true;
+            btnExcel.Click += btnExcel_Click;
             // 
             // txtMennyiseg
             // 

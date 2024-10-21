@@ -246,6 +246,12 @@ namespace RendelesApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            ExcelExport excelExport = new ExcelExport();
+            excelExport.CreateExcel();
+        }
     }
 
     public class CimEgybenDTO

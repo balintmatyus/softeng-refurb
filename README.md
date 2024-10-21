@@ -41,5 +41,4 @@ A szerzők
 6. [Validáció elmélet](./ch02-winforms/ch02-04-02-validation.md)
 7. [Adatok validálása (Ügyfelek adatainak kezelése)](./ch02-winforms/ch02-04-user-management.md)
 8. [Rendeléskezelés (Rendeles és Rendeles_tetel táblák kezelése)](./ch02-winforms/ch02-05-order-management.md)
-9. Adatok exportálása Excelbe
-
+9. [Adatok exportálása Excelbe](./ch02-winforms/ch02-06-excel.md)
